@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jamieholdstock.dcrwidgets">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,16 +14,15 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/dcr_widget_provider" />
         </receiver>
 
         <service
-            android:name=".DcrStatsService"
+            android:name=".service.DcrStatsService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false">
+        </service>
     </application>
-
 </manifest>

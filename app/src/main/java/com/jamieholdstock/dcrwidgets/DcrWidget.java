@@ -11,15 +11,17 @@ import android.widget.RemoteViews;
 
 import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
+import com.jamieholdstock.dcrwidgets.service.DcrStats;
+import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
 public class DcrWidget extends AppWidgetProvider {
 
-    private String currentMessage = "No data yet";
-    private boolean refreshing = false;
+    private static String currentMessage = "No data yet";
+    private static boolean refreshing = false;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        L.l("updating widget view");
+        L.l("updating " + appWidgetIds.length + " widget(s)");
         for (int i = 0; i < appWidgetIds.length; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             views.setTextViewText(R.id.textView, currentMessage);
@@ -61,8 +63,19 @@ public class DcrWidget extends AppWidgetProvider {
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
             refreshing = false;
-            currentMessage = intent.getStringExtra(IntentExtras.DCR_STATS);
+            DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
+            currentMessage = stats.getRawJson();
+
             L.l("widget received '" + currentMessage + "' from service");
+
+            AppWidgetManager gm = AppWidgetManager.getInstance(context);
+            int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
+            this.onUpdate(context, gm, ids);
+        }if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
+            refreshing = false;
+            currentMessage = intent.getStringExtra(IntentExtras.ERROR_MESSAGE);
+
+            L.l("widget received error '" + currentMessage + "' from service");
 
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
