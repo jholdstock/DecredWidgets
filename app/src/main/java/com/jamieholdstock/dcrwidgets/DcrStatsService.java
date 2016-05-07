@@ -24,7 +24,7 @@ public class DcrStatsService extends IntentService {
         L.l("service received " + action);
         if (action.equals(MyIntents.GET_STATS))
         {
-            SystemClock.sleep(1000);
+            SystemClock.sleep(2000);
 
             Intent i = new Intent(this.getApplicationContext(), DcrWidget.class);
             i.setAction(MyIntents.UPDATE_WIDGET);

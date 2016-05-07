@@ -6,29 +6,39 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 
-import java.util.Random;
-
 public class DcrWidget extends AppWidgetProvider {
 
     private String currentMessage = "No data yet";
+    private boolean refreshing = false;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        L.l("Starting widget");
+        L.l("updating widget view");
         for (int i = 0; i < appWidgetIds.length; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             views.setTextViewText(R.id.textView, currentMessage);
 
             Intent intent = new Intent(context, getClass());
-            intent.setAction(MyIntents.WIDGET_CLICKED);
+            intent.setAction(MyIntents.BUTTON_PRESSED);
             PendingIntent pi =  PendingIntent.getBroadcast(context, 0, intent, 0);
 
-            views.setOnClickPendingIntent(R.id.textView, pi);
+            views.setOnClickPendingIntent(R.id.button, pi);
+
+            if (refreshing) {
+                views.setViewVisibility(R.id.button, View.GONE);
+                views.setViewVisibility(R.id.disabled_button, View.VISIBLE);
+            }
+            else {
+                views.setViewVisibility(R.id.button, View.VISIBLE);
+                views.setViewVisibility(R.id.disabled_button, View.GONE);
+            }
+
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
         }
@@ -38,19 +48,24 @@ public class DcrWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
 
-        if (action.equals(MyIntents.WIDGET_CLICKED))
+        if (action.equals(MyIntents.BUTTON_PRESSED))
         {
-            L.l("widget clicked");
+            L.l("button pressed");
+            refreshing = true;
             Intent msgIntent = new Intent(context, DcrStatsService.class);
             msgIntent.setAction(MyIntents.GET_STATS);
             context.startService(msgIntent);
+            AppWidgetManager gm = AppWidgetManager.getInstance(context);
+            int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
+            this.onUpdate(context, gm, ids);
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
+            refreshing = false;
+            currentMessage = intent.getStringExtra(IntentExtras.DCR_STATS);
+            L.l("widget received '" + currentMessage + "' from service");
 
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            currentMessage = intent.getStringExtra(IntentExtras.DCR_STATS);
-            L.l("widget received '" + currentMessage + "' from service");
             this.onUpdate(context, gm, ids);
         }
 
