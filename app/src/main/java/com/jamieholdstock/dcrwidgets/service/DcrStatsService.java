@@ -1,12 +1,7 @@
 package com.jamieholdstock.dcrwidgets.service;
 
 import android.app.IntentService;
-import android.app.Service;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.os.IBinder;
-import android.os.SystemClock;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +13,6 @@ import com.jamieholdstock.dcrwidgets.DcrWidget;
 import com.jamieholdstock.dcrwidgets.L;
 import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
-
-import java.util.Random;
 
 public class DcrStatsService extends IntentService {
     public DcrStatsService() {

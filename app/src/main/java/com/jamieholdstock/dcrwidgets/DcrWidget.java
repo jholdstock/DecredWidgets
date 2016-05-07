@@ -41,7 +41,6 @@ public class DcrWidget extends AppWidgetProvider {
                 views.setViewVisibility(R.id.disabled_button, View.GONE);
             }
 
-
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
         }
     }
@@ -64,7 +63,9 @@ public class DcrWidget extends AppWidgetProvider {
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
             refreshing = false;
             DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
-            currentMessage = stats.getRawJson();
+            double dUsdPrice = stats.getUsdPrice();
+            String sUsdPrice = String.format("%.2f", dUsdPrice);
+            currentMessage = "$" + sUsdPrice;
 
             L.l("widget received '" + currentMessage + "' from service");
 

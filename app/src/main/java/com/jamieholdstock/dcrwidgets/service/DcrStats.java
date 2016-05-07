@@ -3,15 +3,27 @@ package com.jamieholdstock.dcrwidgets.service;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.jamieholdstock.dcrwidgets.L;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DcrStats implements Parcelable {
-    private String rawJson;
+    private final String rawJson;
 
     public DcrStats(String rawJson) {
         this.rawJson = rawJson;
     }
 
-    public String getRawJson() {
-        return rawJson;
+    public double getUsdPrice() {
+        try {
+            JSONObject json = new JSONObject(rawJson);
+            return json.getDouble("usd_price");
+        } catch (JSONException e) {
+            L.l(e.getLocalizedMessage());
+        }
+
+        return 0;
     }
 
     @Override
