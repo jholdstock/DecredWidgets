@@ -30,9 +30,6 @@ proguard*
 # Android Studio Navigation editor temp files
 .navigation/
 
-# Android studio .idea
-.idea/
-
 # Android Studio captures folder
 captures/
 
