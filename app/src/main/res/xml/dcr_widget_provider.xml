@@ -1,0 +1,9 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="110dp"
+    android:minHeight="40dp"
+    android:updatePeriodMillis="1800000"
+    android:previewImage="@drawable/dcr_widget_preview"
+    android:initialLayout="@layout/dcr_widget_layout"
+    android:resizeMode="none"
+    android:widgetCategory="home_screen">
+</appwidget-provider>
