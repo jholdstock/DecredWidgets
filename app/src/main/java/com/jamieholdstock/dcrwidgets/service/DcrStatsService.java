@@ -53,7 +53,6 @@ public class DcrStatsService extends IntentService {
                     public void onResponse(String response) {
                         DcrStats stats = new DcrStats(response);
                         sendStatsToWidget(stats);
-                        L.l("received from dcrstats.com");
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -15,7 +15,6 @@ import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
 public class DcrWidget extends AppWidgetProvider {
-
     private static String currentMessage = "No data yet";
     private static boolean refreshing = false;
 
