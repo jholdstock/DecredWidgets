@@ -28,6 +28,18 @@ public class DcrStats implements Parcelable {
         return 0;
     }
 
+    public double getBtcPrice() {
+        try {
+            JSONObject json = new JSONObject(rawJson);
+            double btc_last = json.getDouble("btc_last");
+            return btc_last;
+        } catch (JSONException e) {
+            L.l(e.getLocalizedMessage());
+        }
+
+        return 0;
+    }
+
     @Override
     public int describeContents() {
         return 0;
