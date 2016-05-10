@@ -42,7 +42,7 @@
 
                 <TextView
                     android:id="@+id/text_usd_price"
-                    android:textSize="19sp"
+                    android:textSize="12dp"
                     android:text="0.00"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
 
                 <TextView
                     android:id="@+id/text_btc_price"
-                    android:textSize="19sp"
+                    android:textSize="12dp"
                     android:text=".0000"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -110,6 +110,7 @@
         android:layout_marginRight="4dp"
         android:gravity="bottom"
         android:layout_gravity="right"
-        android:layout_marginBottom="4dp" />
+        android:layout_marginBottom="4dp"
+        android:textSize="10dp" />
 
 </LinearLayout>
