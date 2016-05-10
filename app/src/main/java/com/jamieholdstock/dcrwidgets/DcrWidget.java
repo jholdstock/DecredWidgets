@@ -14,6 +14,10 @@ import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class DcrWidget extends AppWidgetProvider {
     private static String usdPrice = "";
     private static String btcPrice = "";
@@ -25,6 +29,12 @@ public class DcrWidget extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             views.setTextViewText(R.id.text_btc_price, btcPrice);
             views.setTextViewText(R.id.text_usd_price, usdPrice);
+
+            SimpleDateFormat df = new SimpleDateFormat("EEE HH:mm");
+            Calendar now = Calendar.getInstance();
+
+            String timestamp = "@" + df.format(now.getTime());
+            views.setTextViewText(R.id.text_update_time, timestamp);
 
             attachClickIntent(context, views, R.id.refreshButton);
 
@@ -80,8 +90,8 @@ public class DcrWidget extends AppWidgetProvider {
             this.onUpdate(context, gm, ids);
         }if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
             refreshing = false;
-            btcPrice = "";
-            usdPrice = "";
+            btcPrice = "err";
+            usdPrice = "err";
 
             L.l("widget received error '" + intent.getStringExtra(IntentExtras.ERROR_MESSAGE) + "' from service");
 
