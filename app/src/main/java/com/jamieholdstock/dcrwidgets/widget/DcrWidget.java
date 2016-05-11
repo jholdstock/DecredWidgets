@@ -16,9 +16,6 @@ import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import static com.jamieholdstock.dcrwidgets.widget.WidgetStatus.*;
 
 public class DcrWidget extends AppWidgetProvider {
@@ -33,10 +30,7 @@ public class DcrWidget extends AppWidgetProvider {
             views.setTextViewText(R.id.text_btc_price, btcPrice);
             views.setTextViewText(R.id.text_usd_price, usdPrice);
 
-            SimpleDateFormat df = new SimpleDateFormat("EEE HH:mm");
-            Calendar now = Calendar.getInstance();
-            String timestamp = "@" + df.format(now.getTime());
-            views.setTextViewText(R.id.text_update_time, timestamp);
+            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
 
             attachClickIntent(context, views, R.id.refreshButton);
 
