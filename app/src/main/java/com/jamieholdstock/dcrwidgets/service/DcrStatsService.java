@@ -43,18 +43,20 @@ public class DcrStatsService extends IntentService {
 
         this.getApplicationContext().sendBroadcast(i);
     }
+
     public void getStats() {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://dcrstats.com/api/v1/get_stats";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        DcrStats stats = new DcrStats(response);
-                        sendStatsToWidget(stats);
-                    }
-                }, new Response.ErrorListener() {
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    DcrStats stats = new DcrStats(response);
+                    sendStatsToWidget(stats);
+                }
+            },
+            new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 sendErrorToWidget(error.getLocalizedMessage());
