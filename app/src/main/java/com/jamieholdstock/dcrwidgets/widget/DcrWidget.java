@@ -21,7 +21,7 @@ import static com.jamieholdstock.dcrwidgets.widget.WidgetStatus.*;
 public class DcrWidget extends AppWidgetProvider {
     private static String usdPrice = "";
     private static String btcPrice = "";
-    private static WidgetStatus status;
+    private static WidgetStatus status = INIT;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -32,17 +32,19 @@ public class DcrWidget extends AppWidgetProvider {
 
             views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
 
-            attachClickIntent(context, views, R.id.refreshButton);
+            Intent intent = new Intent(context, getClass());
+            intent.setAction(MyIntents.BUTTON_PRESSED);
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+
+            views.setOnClickPendingIntent(R.id.refreshButton, pi);
 
             switch (status) {
-                case DISPLAY_STATS:
-                    views.setViewVisibility(R.id.refreshButton, View.GONE);
-                    views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
+                case REFRESHING:
+                    enableRefreshButton(false, views);
                     break;
 
                 default:
-                    views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
-                    views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
+                    enableRefreshButton(true, views);
                     break;
             }
 
@@ -50,18 +52,21 @@ public class DcrWidget extends AppWidgetProvider {
         }
     }
 
-    private void attachClickIntent(Context context, RemoteViews views, int id) {
-        Intent intent = new Intent(context, getClass());
-        intent.setAction(MyIntents.BUTTON_PRESSED);
-        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-
-        views.setOnClickPendingIntent(id, pi);
+    private void enableRefreshButton(boolean show, RemoteViews views) {
+        if (show) {
+            views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
+            views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
+        }
+        else {
+            views.setViewVisibility(R.id.refreshButton, View.GONE);
+            views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
+        }
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-
+        L.l("Widget received " + action);
         if (action.equals(MyIntents.BUTTON_PRESSED))
         {
             usdPrice = "...";

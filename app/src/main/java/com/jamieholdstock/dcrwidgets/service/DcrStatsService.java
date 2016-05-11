@@ -2,7 +2,6 @@ package com.jamieholdstock.dcrwidgets.service;
 
 import android.app.IntentService;
 import android.content.Intent;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,6 +14,10 @@ import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 
 public class DcrStatsService extends IntentService {
+    //private final static String DCR_STATS_URL = "https://dcrstats.com";
+    private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
+
+
     public DcrStatsService() {
         super("DcrStatsService");
     }
@@ -22,6 +25,7 @@ public class DcrStatsService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         String action = intent.getAction();
+        L.l("Service received " + action);
         if (action.equals(MyIntents.GET_STATS))
         {
             getStats();
@@ -46,12 +50,14 @@ public class DcrStatsService extends IntentService {
 
     public void getStats() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://dcrstats.com/api/v1/get_stats";
+        String url = DCR_STATS_URL + "/api/v1/get_stats";
 
+        L.l("Sending GET to " + url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+                    L.l("Received non-error response");
                     DcrStats stats = new DcrStats(response);
                     sendStatsToWidget(stats);
                 }
@@ -60,6 +66,7 @@ public class DcrStatsService extends IntentService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 sendErrorToWidget(error.getLocalizedMessage());
+                L.l("Received error response");
                 L.l(error.getLocalizedMessage());
             }
         });

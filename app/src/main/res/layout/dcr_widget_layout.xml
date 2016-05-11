@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -43,7 +44,7 @@
                 <TextView
                     android:id="@+id/text_usd_price"
                     android:textSize="12dp"
-                    android:text="0.00"
+                    android:text="init"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -68,7 +69,7 @@
                 <TextView
                     android:id="@+id/text_btc_price"
                     android:textSize="12dp"
-                    android:text=".0000"
+                    android:text="init"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -84,15 +85,15 @@
             android:gravity="top|right">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:id="@+id/refreshButton"
                 android:src="@drawable/refresh"
                 android:layout_margin="5dp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:id="@+id/refreshButton_disabled"
                 android:visibility="gone"
                 android:clickable="false"
@@ -105,7 +106,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text="\@Sun 09:20"
+        android:text="init"
         android:id="@+id/text_update_time"
         android:layout_marginRight="4dp"
         android:gravity="bottom"

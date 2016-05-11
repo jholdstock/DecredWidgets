@@ -1,7 +1,5 @@
 package com.jamieholdstock.dcrwidgets.widget;
 
-import com.jamieholdstock.dcrwidgets.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
