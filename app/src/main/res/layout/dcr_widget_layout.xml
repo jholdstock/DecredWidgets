@@ -88,17 +88,10 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:id="@+id/refreshButton"
-                android:src="@drawable/refresh"
-                android:layout_margin="5dp" />
+                android:src="@drawable/animated_loading"
+                android:layout_margin="5dp"
+                android:visibility="gone"/>
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:id="@+id/refreshButton_disabled"
-                android:visibility="gone"
-                android:clickable="false"
-                android:src="@drawable/refresh_disabled"
-                android:layout_margin="5dp" />
         </LinearLayout>
 
     </LinearLayout>

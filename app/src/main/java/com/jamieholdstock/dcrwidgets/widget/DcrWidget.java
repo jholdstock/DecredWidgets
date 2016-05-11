@@ -30,21 +30,16 @@ public class DcrWidget extends AppWidgetProvider {
             views.setTextViewText(R.id.text_btc_price, btcPrice);
             views.setTextViewText(R.id.text_usd_price, usdPrice);
 
-            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
-
-            Intent intent = new Intent(context, getClass());
-            intent.setAction(MyIntents.BUTTON_PRESSED);
-            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-
-            views.setOnClickPendingIntent(R.id.refreshButton, pi);
+            addClickIntent(R.id.root_layout, views, context);
 
             switch (status) {
                 case REFRESHING:
-                    enableRefreshButton(false, views);
+                    showRefresh(true, views);
                     break;
 
                 default:
-                    enableRefreshButton(true, views);
+                    showRefresh(false, views);
+                    views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
                     break;
             }
 
@@ -52,14 +47,20 @@ public class DcrWidget extends AppWidgetProvider {
         }
     }
 
-    private void enableRefreshButton(boolean show, RemoteViews views) {
+    private void addClickIntent(int id, RemoteViews views, Context context) {
+        Intent intent = new Intent(context, getClass());
+        intent.setAction(MyIntents.BUTTON_PRESSED);
+        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+
+        views.setOnClickPendingIntent(id, pi);
+    }
+
+    private void showRefresh(boolean show, RemoteViews views) {
         if (show) {
             views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
-            views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
         }
         else {
             views.setViewVisibility(R.id.refreshButton, View.GONE);
-            views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
         }
     }
 
