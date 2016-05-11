@@ -88,7 +88,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:id="@+id/refreshButton"
-                android:src="@drawable/animated_loading"
+                android:src="@drawable/refresh"
                 android:layout_margin="5dp"
                 android:visibility="gone"/>
 
