@@ -18,7 +18,9 @@ public class DcrStats implements Parcelable {
     public double getUsdPrice() {
         try {
             JSONObject json = new JSONObject(rawJson);
-            return json.getDouble("usd_price");
+            double usd_price = json.getDouble("usd_price");
+            double btc_last = json.getDouble("btc_last");
+            return usd_price * btc_last;
         } catch (JSONException e) {
             L.l(e.getLocalizedMessage());
         }
