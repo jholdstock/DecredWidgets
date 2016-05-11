@@ -44,7 +44,7 @@
                 <TextView
                     android:id="@+id/text_usd_price"
                     android:textSize="12dp"
-                    android:text="init"
+                    android:text="@string/dots"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -69,7 +69,7 @@
                 <TextView
                     android:id="@+id/text_btc_price"
                     android:textSize="12dp"
-                    android:text="init"
+                    android:text="@string/dots"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -89,8 +89,7 @@
                 android:layout_height="22dp"
                 android:id="@+id/refreshButton"
                 android:src="@drawable/refresh"
-                android:layout_margin="5dp"
-                android:visibility="gone"/>
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -99,12 +98,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text="init"
-        android:id="@+id/text_update_time"
+        android:text=""
+        android:id="@+id/update_status"
         android:layout_marginRight="4dp"
         android:gravity="bottom"
         android:layout_gravity="right"
         android:layout_marginBottom="4dp"
-        android:textSize="10dp" />
+        android:textSize="12dp" />
 
 </LinearLayout>

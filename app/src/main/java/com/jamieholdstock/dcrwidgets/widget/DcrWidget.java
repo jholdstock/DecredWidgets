@@ -18,8 +18,16 @@ import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
 public class DcrWidget extends AppWidgetProvider {
 
+    private static String offlineMsg;
+    private static String error;
+    private static String dots;
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        offlineMsg = context.getString(R.string.offline);
+        dots = context.getString(R.string.dots);
+        error = context.getString(R.string.error);
+        this.sendIntentToService(context);
         for (int i = 0; i < appWidgetIds.length; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             addClickIntent(R.id.root_layout, views, context);
@@ -27,45 +35,41 @@ public class DcrWidget extends AppWidgetProvider {
         }
     }
 
-    private void draw_buttonPressed(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        for (int i = 0; i < appWidgetIds.length; i++) {
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
-            views.setTextViewText(R.id.text_btc_price, "...");
-            views.setTextViewText(R.id.text_usd_price, "...");
+    private void draw_buttonPressed(RemoteViews views) {
+        views.setTextViewText(R.id.text_btc_price, dots);
+        views.setTextViewText(R.id.text_usd_price, dots);
 
-            showRefresh(true, views);
-
-            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
-        }
+        showRefresh(true, views);
     }
 
-    private void draw_stats(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds, DcrStats stats) {
+    private void draw_stats(DcrStats stats, RemoteViews views) {
         double dUsdPrice = stats.getUsdPrice();
         String usdPrice = String.format("%.2f", dUsdPrice);
 
         double dBtcPrice = stats.getBtcPrice();
         String btcPrice = String.format("%.4f", dBtcPrice);
-        for (int i = 0; i < appWidgetIds.length; i++) {
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
-            views.setTextViewText(R.id.text_btc_price, btcPrice);
-            views.setTextViewText(R.id.text_usd_price, usdPrice);
 
-            showRefresh(false, views);
-            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
-            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
-        }
+        views.setTextViewText(R.id.text_btc_price, btcPrice);
+        views.setTextViewText(R.id.text_usd_price, usdPrice);
+
+        showRefresh(false, views);
+        showTimestamp(views);
     }
 
-    private void draw_error(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        for (int i = 0; i < appWidgetIds.length; i++) {
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
-            views.setTextViewText(R.id.text_btc_price, "err");
-            views.setTextViewText(R.id.text_usd_price, "err");
+    private void draw_error(RemoteViews views) {
+        views.setTextViewText(R.id.text_btc_price, error);
+        views.setTextViewText(R.id.text_usd_price, error);
 
-            showRefresh(false, views);
-            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
-            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
-        }
+        showRefresh(false, views);
+        showError(views);
+    }
+
+    private void showError(RemoteViews views) {
+        views.setTextViewText(R.id.update_status, offlineMsg);
+    }
+
+    private void showTimestamp(RemoteViews views) {
+        views.setTextViewText(R.id.update_status, new TimeStamp().toString());
     }
 
     private void addClickIntent(int id, RemoteViews views, Context context) {
@@ -88,31 +92,44 @@ public class DcrWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
+        if (!action.contains(MyIntents.INTENT_PREFIX)) {
+            super.onReceive(context, intent);
+            return;
+        }
+
         L.l("Widget received " + action);
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context, this.getClass()));
         if (action.equals(MyIntents.BUTTON_PRESSED))
         {
-            Intent msgIntent = new Intent(context, DcrStatsService.class);
-            msgIntent.setAction(MyIntents.GET_STATS);
-            context.startService(msgIntent);
-            AppWidgetManager gm = AppWidgetManager.getInstance(context);
-            int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.draw_buttonPressed(context, gm, ids);
+            this.sendIntentToService(context);
+            for (int i = 0; i < appWidgetIds.length; i++) {
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+                this.draw_buttonPressed(views);
+                appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+            }
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
             DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
-
-            AppWidgetManager gm = AppWidgetManager.getInstance(context);
-            int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.draw_stats(context, gm, ids, stats);
+            for (int i = 0; i < appWidgetIds.length; i++) {
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+                this.draw_stats(stats, views);
+                appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+            }
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
             L.l("widget received error '" + intent.getStringExtra(IntentExtras.ERROR_MESSAGE) + "' from service");
-
-            AppWidgetManager gm = AppWidgetManager.getInstance(context);
-            int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.draw_error(context, gm, ids);
+            for (int i = 0; i < appWidgetIds.length; i++) {
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+                this.draw_error(views);
+                appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+            }
         }
+    }
 
-        super.onReceive(context, intent);
+    private void sendIntentToService(Context context) {
+        Intent msgIntent = new Intent(context, DcrStatsService.class);
+        msgIntent.setAction(MyIntents.GET_STATS);
+        context.startService(msgIntent);
     }
 }
