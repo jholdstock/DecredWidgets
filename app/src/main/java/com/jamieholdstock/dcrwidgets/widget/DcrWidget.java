@@ -1,4 +1,4 @@
-package com.jamieholdstock.dcrwidgets;
+package com.jamieholdstock.dcrwidgets.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,19 +9,22 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.jamieholdstock.dcrwidgets.L;
+import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import static com.jamieholdstock.dcrwidgets.widget.WidgetStatus.*;
 
 public class DcrWidget extends AppWidgetProvider {
     private static String usdPrice = "";
     private static String btcPrice = "";
-    private static boolean refreshing = false;
+    private static WidgetStatus status;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -32,19 +35,21 @@ public class DcrWidget extends AppWidgetProvider {
 
             SimpleDateFormat df = new SimpleDateFormat("EEE HH:mm");
             Calendar now = Calendar.getInstance();
-
             String timestamp = "@" + df.format(now.getTime());
             views.setTextViewText(R.id.text_update_time, timestamp);
 
             attachClickIntent(context, views, R.id.refreshButton);
 
-            if (refreshing) {
-                views.setViewVisibility(R.id.refreshButton, View.GONE);
-                views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
-            }
-            else {
-                views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
-                views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
+            switch (status) {
+                case DISPLAY_STATS:
+                    views.setViewVisibility(R.id.refreshButton, View.GONE);
+                    views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
+                    break;
+
+                default:
+                    views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
+                    views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
+                    break;
             }
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
@@ -54,7 +59,7 @@ public class DcrWidget extends AppWidgetProvider {
     private void attachClickIntent(Context context, RemoteViews views, int id) {
         Intent intent = new Intent(context, getClass());
         intent.setAction(MyIntents.BUTTON_PRESSED);
-        PendingIntent pi =  PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 
         views.setOnClickPendingIntent(id, pi);
     }
@@ -67,7 +72,7 @@ public class DcrWidget extends AppWidgetProvider {
         {
             usdPrice = "...";
             btcPrice = "...";
-            refreshing = true;
+            status = REFRESHING;
             Intent msgIntent = new Intent(context, DcrStatsService.class);
             msgIntent.setAction(MyIntents.GET_STATS);
             context.startService(msgIntent);
@@ -76,7 +81,7 @@ public class DcrWidget extends AppWidgetProvider {
             this.onUpdate(context, gm, ids);
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
-            refreshing = false;
+            status = DISPLAY_STATS;
             DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
 
             double dUsdPrice = stats.getUsdPrice();
@@ -88,8 +93,9 @@ public class DcrWidget extends AppWidgetProvider {
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
             this.onUpdate(context, gm, ids);
-        }if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
-            refreshing = false;
+        }
+        else if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
+            status = ERROR;
             btcPrice = "err";
             usdPrice = "err";
 
