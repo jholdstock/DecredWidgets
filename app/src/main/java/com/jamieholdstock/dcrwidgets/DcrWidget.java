@@ -15,11 +15,12 @@ import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
 public class DcrWidget extends AppWidgetProvider {
-    private static String currentMessage = "Last Price:";
+    private static String currentMessage = "No data yet";
     private static boolean refreshing = false;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        L.l("updating " + appWidgetIds.length + " widget(s)");
         for (int i = 0; i < appWidgetIds.length; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             views.setTextViewText(R.id.textView, currentMessage);
@@ -28,15 +29,15 @@ public class DcrWidget extends AppWidgetProvider {
             intent.setAction(MyIntents.BUTTON_PRESSED);
             PendingIntent pi =  PendingIntent.getBroadcast(context, 0, intent, 0);
 
-            views.setOnClickPendingIntent(R.id.refreshButton, pi);
+            views.setOnClickPendingIntent(R.id.button, pi);
 
             if (refreshing) {
-                views.setViewVisibility(R.id.refreshButton, View.GONE);
-                views.setViewVisibility(R.id.refreshButton_disabled, View.VISIBLE);
+                views.setViewVisibility(R.id.button, View.GONE);
+                views.setViewVisibility(R.id.disabled_button, View.VISIBLE);
             }
             else {
-                views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
-                views.setViewVisibility(R.id.refreshButton_disabled, View.GONE);
+                views.setViewVisibility(R.id.button, View.VISIBLE);
+                views.setViewVisibility(R.id.disabled_button, View.GONE);
             }
 
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
@@ -49,7 +50,7 @@ public class DcrWidget extends AppWidgetProvider {
 
         if (action.equals(MyIntents.BUTTON_PRESSED))
         {
-            currentMessage = "...";
+            L.l("button pressed");
             refreshing = true;
             Intent msgIntent = new Intent(context, DcrStatsService.class);
             msgIntent.setAction(MyIntents.GET_STATS);
@@ -63,7 +64,10 @@ public class DcrWidget extends AppWidgetProvider {
             DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
             double dUsdPrice = stats.getUsdPrice();
             String sUsdPrice = String.format("%.2f", dUsdPrice);
-            currentMessage = " Last Price: $" + sUsdPrice;
+            currentMessage = "$" + sUsdPrice;
+
+            L.l("widget received '" + currentMessage + "' from service");
+
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
             this.onUpdate(context, gm, ids);
