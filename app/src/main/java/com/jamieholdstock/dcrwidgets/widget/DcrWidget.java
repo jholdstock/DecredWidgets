@@ -16,33 +16,54 @@ import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.service.DcrStatsService;
 
-import static com.jamieholdstock.dcrwidgets.widget.WidgetStatus.*;
-
 public class DcrWidget extends AppWidgetProvider {
-    private static String usdPrice = "";
-    private static String btcPrice = "";
-    private static WidgetStatus status = INIT;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int i = 0; i < appWidgetIds.length; i++) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+            addClickIntent(R.id.root_layout, views, context);
+            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+        }
+    }
+
+    private void draw_buttonPressed(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+            views.setTextViewText(R.id.text_btc_price, "...");
+            views.setTextViewText(R.id.text_usd_price, "...");
+
+            showRefresh(true, views);
+
+            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+        }
+    }
+
+    private void draw_stats(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds, DcrStats stats) {
+        double dUsdPrice = stats.getUsdPrice();
+        String usdPrice = String.format("%.2f", dUsdPrice);
+
+        double dBtcPrice = stats.getBtcPrice();
+        String btcPrice = String.format("%.4f", dBtcPrice);
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
             views.setTextViewText(R.id.text_btc_price, btcPrice);
             views.setTextViewText(R.id.text_usd_price, usdPrice);
 
-            addClickIntent(R.id.root_layout, views, context);
+            showRefresh(false, views);
+            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
+            appWidgetManager.updateAppWidget(appWidgetIds[i], views);
+        }
+    }
 
-            switch (status) {
-                case REFRESHING:
-                    showRefresh(true, views);
-                    break;
+    private void draw_error(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        for (int i = 0; i < appWidgetIds.length; i++) {
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
+            views.setTextViewText(R.id.text_btc_price, "err");
+            views.setTextViewText(R.id.text_usd_price, "err");
 
-                default:
-                    showRefresh(false, views);
-                    views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
-                    break;
-            }
-
+            showRefresh(false, views);
+            views.setTextViewText(R.id.text_update_time, new TimeStamp().toString());
             appWidgetManager.updateAppWidget(appWidgetIds[i], views);
         }
     }
@@ -70,40 +91,26 @@ public class DcrWidget extends AppWidgetProvider {
         L.l("Widget received " + action);
         if (action.equals(MyIntents.BUTTON_PRESSED))
         {
-            usdPrice = "...";
-            btcPrice = "...";
-            status = REFRESHING;
             Intent msgIntent = new Intent(context, DcrStatsService.class);
             msgIntent.setAction(MyIntents.GET_STATS);
             context.startService(msgIntent);
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.onUpdate(context, gm, ids);
+            this.draw_buttonPressed(context, gm, ids);
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET)) {
-            status = DISPLAY_STATS;
             DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
-
-            double dUsdPrice = stats.getUsdPrice();
-            usdPrice = String.format("%.2f", dUsdPrice);
-
-            double dBtcPrice = stats.getBtcPrice();
-            btcPrice = String.format("%.4f", dBtcPrice);
 
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.onUpdate(context, gm, ids);
+            this.draw_stats(context, gm, ids, stats);
         }
         else if (action.equals(MyIntents.UPDATE_WIDGET_ERROR)) {
-            status = ERROR;
-            btcPrice = "err";
-            usdPrice = "err";
-
             L.l("widget received error '" + intent.getStringExtra(IntentExtras.ERROR_MESSAGE) + "' from service");
 
             AppWidgetManager gm = AppWidgetManager.getInstance(context);
             int[] ids = gm.getAppWidgetIds(new ComponentName(context, this.getClass()));
-            this.onUpdate(context, gm, ids);
+            this.draw_error(context, gm, ids);
         }
 
         super.onReceive(context, intent);
