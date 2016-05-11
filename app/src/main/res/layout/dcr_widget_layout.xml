@@ -1,115 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:weightSum="1"
-    android:background="@color/dcr_background">
+    android:background="@color/dcr_background"
+    tools:showIn="@layout/dcr_widget_provider">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left">
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/imageView"
-            android:src="@drawable/dcr_logo"
-            android:layout_marginLeft="4dp"
-            android:layout_gravity="center_vertical" />
-
-        <LinearLayout
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:id="@+id/imageView"
+            android:src="@drawable/dcr_logo"
+            android:layout_column="18"
+            android:layout_gravity="top|center_vertical"
+            android:layout_margin="2dp" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:id="@+id/imageView3"
-                    android:src="@drawable/usd_logo" />
-
-                <TextView
-                    android:id="@+id/text_usd_price"
-                    android:textSize="19sp"
-                    android:text="0.00"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:textIsSelectable="false" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:id="@+id/imageView2"
-                    android:src="@drawable/btc_logo" />
-
-                <TextView
-                    android:id="@+id/text_btc_price"
-                    android:textSize="19sp"
-                    android:text=".0000"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:textIsSelectable="false" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="top|right">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/refreshButton"
-                android:src="@drawable/refresh"
-                android:layout_margin="5dp" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/refreshButton_disabled"
-                android:visibility="gone"
-                android:clickable="false"
-                android:src="@drawable/refresh_disabled"
-                android:layout_margin="5dp" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/textView"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:text="Last Price: $000.00"
+            android:layout_weight="0.04"
+            android:layout_column="19"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:text="\@Sun 09:20"
-        android:id="@+id/text_update_time"
-        android:layout_marginRight="4dp"
-        android:gravity="bottom"
-        android:layout_gravity="right"
-        android:layout_marginBottom="4dp" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/refreshButton"
+        android:src="@drawable/refresh"
+        android:layout_column="48"
+        android:layout_gravity="right" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/refreshButton_disabled"
+        android:visibility="gone"
+        android:clickable="false"
+        android:layout_weight="0.09"
+        android:src="@drawable/refresh_disabled"
+        android:layout_gravity="right" />
 
 </LinearLayout>
