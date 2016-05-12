@@ -2,6 +2,7 @@ package com.jamieholdstock.dcrwidgets.service;
 
 import android.app.IntentService;
 import android.content.Intent;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -14,8 +15,8 @@ import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 
 public class DcrStatsService extends IntentService {
-    //private final static String DCR_STATS_URL = "https://dcrstats.com";
-    private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
+    private final static String DCR_STATS_URL = "https://dcrstats.com";
+    //private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
 
 
     public DcrStatsService() {
@@ -25,24 +26,21 @@ public class DcrStatsService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         String action = intent.getAction();
-        L.l("Service received " + action);
         if (action.equals(MyIntents.GET_STATS))
         {
             getStats();
         }
     }
 
-    public void sendErrorToWidget(String message) {
+    public void sendErrorToWidget() {
         Intent i = new Intent(this.getApplicationContext(), DcrWidget.class);
-        i.setAction(MyIntents.UPDATE_WIDGET_ERROR);
-        i.putExtra(IntentExtras.ERROR_MESSAGE, message);
-
+        i.setAction(MyIntents.DRAW_ERROR);
         this.getApplicationContext().sendBroadcast(i);
     }
 
     public void sendStatsToWidget(DcrStats stats) {
         Intent i = new Intent(this.getApplicationContext(), DcrWidget.class);
-        i.setAction(MyIntents.UPDATE_WIDGET);
+        i.setAction(MyIntents.DRAW_STATS);
         i.putExtra(IntentExtras.DCR_STATS, stats);
 
         this.getApplicationContext().sendBroadcast(i);
@@ -52,12 +50,12 @@ public class DcrStatsService extends IntentService {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = DCR_STATS_URL + "/api/v1/get_stats";
 
-        L.l("Sending GET to " + url);
+        L.l("Service sending GET to " + url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    L.l("Received non-error response");
+                    L.l("Service received non-error response");
                     DcrStats stats = new DcrStats(response);
                     sendStatsToWidget(stats);
                 }
@@ -65,9 +63,10 @@ public class DcrStatsService extends IntentService {
             new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                sendErrorToWidget(error.getLocalizedMessage());
-                L.l("Received error response");
-                L.l(error.getLocalizedMessage());
+                sendErrorToWidget();
+                L.l("Service received error response:");
+                L.l(error.getMessage());
+                L.l(error.getCause().getMessage());
             }
         });
         queue.add(stringRequest);

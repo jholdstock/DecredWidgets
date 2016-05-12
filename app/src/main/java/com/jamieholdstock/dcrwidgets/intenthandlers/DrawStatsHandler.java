@@ -8,7 +8,7 @@ import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.widget.TimeStamp;
 
-public class UpdateWidgetHandler extends IntentHandler {
+public class DrawStatsHandler extends IntentHandler {
     @Override
     public void handle(Intent intent, RemoteViews views) {
         DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);

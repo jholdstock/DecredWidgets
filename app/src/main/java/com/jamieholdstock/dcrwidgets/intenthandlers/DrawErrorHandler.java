@@ -7,7 +7,7 @@ import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.widget.TimeStamp;
 
-public class ErrorHandler extends IntentHandler {
+public class DrawErrorHandler extends IntentHandler {
     @Override
     public void handle(Intent intent, RemoteViews views) {
         views.setTextViewText(R.id.text_btc_price, MyStrings.error);
