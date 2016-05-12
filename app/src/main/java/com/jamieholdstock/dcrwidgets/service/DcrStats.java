@@ -10,34 +10,40 @@ import org.json.JSONObject;
 
 public class DcrStats implements Parcelable {
     private final String rawJson;
-
+    private JSONObject jsonObject;
     public DcrStats(String rawJson) {
         this.rawJson = rawJson;
     }
 
     public double getUsdPrice() {
-        try {
-            JSONObject json = new JSONObject(rawJson);
-            double usd_price = json.getDouble("usd_price");
-            double btc_last = json.getDouble("btc_last");
-            return usd_price * btc_last;
-        } catch (JSONException e) {
-            L.l(e.getLocalizedMessage());
-        }
-
-        return 0;
+        double usd_price = getDouble("usd_price");
+        double btc_last = getDouble("btc_last");
+        return usd_price * btc_last;
     }
 
     public double getBtcPrice() {
+        return getDouble("btc_last");
+    }
+
+    private double getDouble(String id) {
         try {
-            JSONObject json = new JSONObject(rawJson);
-            double btc_last = json.getDouble("btc_last");
-            return btc_last;
+            return getJsonObject().getDouble(id);
         } catch (JSONException e) {
             L.l(e.getLocalizedMessage());
+            throw new RuntimeException("JSON PARSE ERROR! Looking for ID '" + id + "'\nRaw Json: " + rawJson);
+        }
+    }
+
+    private JSONObject getJsonObject() {
+        if (jsonObject == null) {
+            try {
+                jsonObject = new JSONObject(rawJson);
+            } catch (JSONException e) {
+                throw new RuntimeException("JSON PARSE ERROR!\nRaw Json: " + rawJson);
+            }
         }
 
-        return 0;
+        return jsonObject;
     }
 
     @Override
