@@ -54,7 +54,7 @@ public class DcrStatsService extends IntentService {
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    L.l("Service received non-error response");
+                    L.l("Service received non-error response\n" + response);
                     DcrStats stats = new DcrStats(response);
                     sendStatsToWidget(stats);
                 }
