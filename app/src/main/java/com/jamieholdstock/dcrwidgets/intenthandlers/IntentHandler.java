@@ -7,14 +7,23 @@ import android.widget.RemoteViews;
 import com.jamieholdstock.dcrwidgets.R;
 
 abstract public class IntentHandler {
-    abstract public void handle(Intent intent, RemoteViews views);
 
-    protected void showRefresh(boolean show, RemoteViews views) {
+    protected final Intent intent;
+    protected final RemoteViews views;
+
+    public IntentHandler(Intent intent, RemoteViews views) {
+        this.intent = intent;
+        this.views = views;
+    }
+
+    abstract public void handle();
+
+    protected void showProgressBar(boolean show) {
         if (show) {
-            views.setViewVisibility(R.id.refreshButton, View.VISIBLE);
+            views.setViewVisibility(R.id.progressBar, View.VISIBLE);
         }
         else {
-            views.setViewVisibility(R.id.refreshButton, View.GONE);
+            views.setViewVisibility(R.id.progressBar, View.GONE);
         }
     }
 }

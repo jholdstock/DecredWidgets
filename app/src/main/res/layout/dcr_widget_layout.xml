@@ -84,12 +84,14 @@
             android:layout_height="fill_parent"
             android:gravity="top|right">
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:id="@+id/refreshButton"
-                android:src="@drawable/refresh"
-                android:layout_margin="5dp"/>
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp" />
 
         </LinearLayout>
 

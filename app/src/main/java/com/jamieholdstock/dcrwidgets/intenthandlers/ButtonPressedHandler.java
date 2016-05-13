@@ -7,11 +7,18 @@ import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
 
 public class ButtonPressedHandler extends IntentHandler {
+
+    public ButtonPressedHandler(Intent intent, RemoteViews views) {
+        super(intent, views);
+    }
+
     @Override
-    public void handle(Intent intent, RemoteViews views) {
+    public void handle() {
         views.setTextViewText(R.id.text_btc_price, MyStrings.dots);
         views.setTextViewText(R.id.text_usd_price, MyStrings.dots);
 
-        showRefresh(true, views);
+        views.setTextViewText(R.id.update_status, "");
+
+        showProgressBar(true);
     }
 }

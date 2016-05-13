@@ -9,8 +9,13 @@ import com.jamieholdstock.dcrwidgets.service.DcrStats;
 import com.jamieholdstock.dcrwidgets.widget.TimeStamp;
 
 public class DrawStatsHandler extends IntentHandler {
+
+    public DrawStatsHandler(Intent intent, RemoteViews views) {
+        super(intent, views);
+    }
+
     @Override
-    public void handle(Intent intent, RemoteViews views) {
+    public void handle() {
         DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
         double dUsdPrice = stats.getUsdPrice();
         String usdPrice = String.format("%.2f", dUsdPrice);
@@ -21,11 +26,8 @@ public class DrawStatsHandler extends IntentHandler {
         views.setTextViewText(R.id.text_btc_price, btcPrice);
         views.setTextViewText(R.id.text_usd_price, usdPrice);
 
-        showRefresh(false, views);
-        showTimestamp(views);
-    }
-    private void showTimestamp(RemoteViews views) {
         views.setTextViewText(R.id.update_status, new TimeStamp().toString());
-    }
 
+        showProgressBar(false);
+    }
 }

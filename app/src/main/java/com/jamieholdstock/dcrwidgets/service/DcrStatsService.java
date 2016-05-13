@@ -15,8 +15,8 @@ import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 
 public class DcrStatsService extends IntentService {
-    private final static String DCR_STATS_URL = "https://dcrstats.com";
-    //private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
+    //private final static String DCR_STATS_URL = "https://dcrstats.com";
+    private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
 
     public DcrStatsService() {
         super("DcrStatsService");
@@ -63,9 +63,7 @@ public class DcrStatsService extends IntentService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 sendErrorToWidget();
-                L.l("Service received error response:");
-                L.l(error.getMessage());
-                L.l(error.getCause().getMessage());
+                L.l("Service received error response");
             }
         });
         queue.add(stringRequest);
