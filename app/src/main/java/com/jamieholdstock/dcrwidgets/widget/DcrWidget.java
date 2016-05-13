@@ -47,30 +47,30 @@ public class DcrWidget extends AppWidgetProvider {
             return;
         }
 
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
         IntentHandler handler = null;
         switch (action) {
             case MyIntents.BUTTON_PRESSED:
                 this.sendIntentToService(context);
-                handler = new ButtonPressedHandler();
-            break;
+                handler = new ButtonPressedHandler(intent, views);
+                break;
 
             case MyIntents.DRAW_STATS:
                 waitingForService = false;
-                handler = new DrawStatsHandler();
-            break;
+                handler = new DrawStatsHandler(intent, views);
+                break;
 
             case MyIntents.DRAW_ERROR:
                 waitingForService = false;
-                handler = new DrawErrorHandler();
-            break;
+                handler = new DrawErrorHandler(intent, views);
+                break;
         }
 
         AppWidgetManager awm = AppWidgetManager.getInstance(context);
         int[] ids = awm.getAppWidgetIds(new ComponentName(context, getClass()));
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.dcr_widget_layout);
 
         for (int i = 0; i < ids.length; i++) {
-            handler.handle(intent, views);
+            handler.handle();
             awm.updateAppWidget(ids[i], views);
         }
     }
