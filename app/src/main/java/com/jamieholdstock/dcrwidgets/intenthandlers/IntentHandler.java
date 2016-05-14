@@ -1,5 +1,6 @@
 package com.jamieholdstock.dcrwidgets.intenthandlers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -16,7 +17,7 @@ abstract public class IntentHandler {
         this.views = views;
     }
 
-    abstract public void handle();
+    abstract public void handle(Context context);
 
     protected void showProgressBar(boolean show) {
         if (show) {

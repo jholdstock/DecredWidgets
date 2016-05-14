@@ -1,5 +1,6 @@
 package com.jamieholdstock.dcrwidgets.intenthandlers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
@@ -15,7 +16,7 @@ public class DrawStatsHandler extends IntentHandler {
     }
 
     @Override
-    public void handle() {
+    public void handle(Context context) {
         DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
 
         drawPriceStats(stats);

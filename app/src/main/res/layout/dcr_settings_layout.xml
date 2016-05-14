@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
     <RadioGroup
@@ -13,13 +13,15 @@
             android:layout_height="wrap_content"
             android:text="@string/price_radio_button"
             android:id="@+id/salePriceBtn"
-            android:checked="true" />
+            android:checked="true"
+            android:layout_margin="6dp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stake_radio_button"
-            android:id="@+id/stakeInfoBtn" />
+            android:id="@+id/stakeInfoBtn"
+            android:layout_margin="6dp" />
     </RadioGroup>
 
     <Button

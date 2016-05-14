@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.WidgetSettings;
 import com.jamieholdstock.dcrwidgets.intenthandlers.ButtonPressedHandler;
@@ -34,17 +33,17 @@ public class DcrWidget extends AppWidgetProvider {
         switch (action) {
             case MyIntents.BUTTON_PRESSED:
                 this.sendIntentToService(context);
-                new ButtonPressedHandler(intent, views).handle();
+                new ButtonPressedHandler(intent, views).handle(context);
                 break;
 
             case MyIntents.DRAW_STATS:
                 waitingForService = false;
-                new DrawStatsHandler(intent, views).handle();
+                new DrawStatsHandler(intent, views).handle(context);
                 break;
 
             case MyIntents.DRAW_ERROR:
                 waitingForService = false;
-                new DrawErrorHandler(intent, views).handle();
+                new DrawErrorHandler(intent, views).handle(context);
                 break;
         }
 
@@ -53,7 +52,6 @@ public class DcrWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] widgetIds) {
-        MyStrings.init(context);
         this.sendIntentToService(context);
         RemoteViews views = getViews(context);
         pushUpdatedWidget(views, context);

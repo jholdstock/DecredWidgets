@@ -1,9 +1,9 @@
 package com.jamieholdstock.dcrwidgets.intenthandlers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
 
 public class ButtonPressedHandler extends IntentHandler {
@@ -13,13 +13,13 @@ public class ButtonPressedHandler extends IntentHandler {
     }
 
     @Override
-    public void handle() {
-        views.setTextViewText(R.id.text_btc_price, MyStrings.dots);
-        views.setTextViewText(R.id.text_usd_price, MyStrings.dots);
+    public void handle(Context context) {
+        views.setTextViewText(R.id.text_btc_price, context.getString(R.string.dots));
+        views.setTextViewText(R.id.text_usd_price, context.getString(R.string.dots));
 
-        views.setTextViewText(R.id.text_ticket_price, MyStrings.dots);
-        views.setTextViewText(R.id.text_price_change, MyStrings.dots);
-        views.setTextViewText(R.id.text_est_new_price, MyStrings.dots);
+        views.setTextViewText(R.id.text_ticket_price, context.getString(R.string.dots));
+        views.setTextViewText(R.id.text_price_change, context.getString(R.string.dots));
+        views.setTextViewText(R.id.text_est_new_price, context.getString(R.string.dots));
 
         views.setTextViewText(R.id.update_status, "");
 
