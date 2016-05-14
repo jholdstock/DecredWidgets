@@ -21,8 +21,25 @@ public class DcrStats implements Parcelable {
         return usd_price * btc_last;
     }
 
+    public double getTicketPrice() {
+        return getDouble("sbits");
+    }
+
     public double getBtcPrice() {
         return getDouble("btc_last");
+    }
+
+    public double getPriceChangeInSeconds() {
+        return (getBlocksToPriceChange() * getAverageBlockTime());
+    }
+
+    private double getAverageBlockTime() {
+        return getDouble("average_time");
+    }
+
+    private double getBlocksToPriceChange() {
+        double totalBlocks = getDouble("blocks");
+        return 144 - (totalBlocks % 144);
     }
 
     private double getDouble(String id) {

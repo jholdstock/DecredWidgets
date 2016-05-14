@@ -14,8 +14,11 @@ public class DrawErrorHandler extends IntentHandler {
 
     @Override
     public void handle() {
-        views.setTextViewText(R.id.text_btc_price, MyStrings.error);
-        views.setTextViewText(R.id.text_usd_price, MyStrings.error);
+        views.setTextViewText(R.id.text_btc_price, "");
+        views.setTextViewText(R.id.text_usd_price, "");
+
+        views.setTextViewText(R.id.text_ticket_price, "");
+        views.setTextViewText(R.id.text_price_change, "");
 
         views.setTextViewText(R.id.update_status, MyStrings.offlineMsg);
 

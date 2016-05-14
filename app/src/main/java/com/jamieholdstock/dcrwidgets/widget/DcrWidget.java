@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.jamieholdstock.dcrwidgets.L;
@@ -70,6 +71,14 @@ public class DcrWidget extends AppWidgetProvider {
         for (int i = 0; i < widgetIds.length; i++) {
             String widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
             L.l(widgetType);
+
+            if (widgetType.equals("price")) {
+                views.setViewVisibility(R.id.stake_panel, View.GONE);
+                views.setViewVisibility(R.id.price_panel, View.VISIBLE);
+            } else {
+                views.setViewVisibility(R.id.price_panel, View.GONE);
+                views.setViewVisibility(R.id.stake_panel, View.VISIBLE);
+            }
             awm.updateAppWidget(widgetIds[i], views);
         }
     }

@@ -2,8 +2,8 @@
     <string name="app_name">Dcr Widgets</string>
     <string name="offline">Offline</string>
     <string name="dots">...</string>
-    <string name="error"></string>
     <string name="price_radio_button">Last sale price</string>
     <string name="stake_radio_button">Stake info</string>
     <string name="choose_a_widget">Choose a widget</string>
+    <string name="save_button">Save</string>
 </resources>

@@ -20,7 +20,10 @@
                 android:resource="@xml/dcr_widget_provider" />
         </receiver>
 
-        <activity android:name=".WidgetSettings">
+        <activity
+            android:name=".WidgetSettings"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
+            android:label="@string/choose_a_widget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
