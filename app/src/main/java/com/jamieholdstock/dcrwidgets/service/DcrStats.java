@@ -29,12 +29,16 @@ public class DcrStats implements Parcelable {
         return getDouble("btc_last");
     }
 
-    public double getPriceChangeInSeconds() {
-        return (getBlocksToPriceChange() * getAverageBlockTime());
+    public double getEstNextPrice() {
+        return getDouble("est_sbits");
     }
 
     private double getAverageBlockTime() {
         return getDouble("average_time");
+    }
+
+    public double getPriceChangeInSeconds() {
+        return (getBlocksToPriceChange() * getAverageBlockTime());
     }
 
     private double getBlocksToPriceChange() {

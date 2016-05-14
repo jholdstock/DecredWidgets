@@ -19,6 +19,7 @@ public class DrawErrorHandler extends IntentHandler {
 
         views.setTextViewText(R.id.text_ticket_price, "");
         views.setTextViewText(R.id.text_price_change, "");
+        views.setTextViewText(R.id.text_est_new_price, "");
 
         views.setTextViewText(R.id.update_status, MyStrings.offlineMsg);
 

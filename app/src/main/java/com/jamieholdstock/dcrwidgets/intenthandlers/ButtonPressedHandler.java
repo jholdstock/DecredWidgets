@@ -19,6 +19,7 @@ public class ButtonPressedHandler extends IntentHandler {
 
         views.setTextViewText(R.id.text_ticket_price, MyStrings.dots);
         views.setTextViewText(R.id.text_price_change, MyStrings.dots);
+        views.setTextViewText(R.id.text_est_new_price, MyStrings.dots);
 
         views.setTextViewText(R.id.update_status, "");
 

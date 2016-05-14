@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.jamieholdstock.dcrwidgets.L;
 import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.WidgetSettings;
@@ -70,7 +69,6 @@ public class DcrWidget extends AppWidgetProvider {
         int[] widgetIds = awm.getAppWidgetIds(new ComponentName(context, getClass()));
         for (int i = 0; i < widgetIds.length; i++) {
             String widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
-            L.l(widgetType);
 
             if (widgetType.equals("price")) {
                 views.setViewVisibility(R.id.stake_panel, View.GONE);

@@ -53,5 +53,9 @@ public class DrawStatsHandler extends IntentHandler {
 
         String time = sHours + "h " + sMinutes + "m";
         views.setTextViewText(R.id.text_price_change, time);
+
+        double dEstNext = stats.getEstNextPrice();
+        String estNext = String.format("%.2f", dEstNext);
+        views.setTextViewText(R.id.text_est_new_price, estNext);
     }
 }
