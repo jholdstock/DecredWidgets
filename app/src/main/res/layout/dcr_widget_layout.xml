@@ -5,107 +5,86 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@color/dcr_background">
+    android:background="@drawable/widget_backgroud">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/imageView"
-            android:src="@drawable/dcr_logo"
-            android:layout_marginLeft="4dp"
-            android:layout_gravity="center_vertical" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="right|top" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical">
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp">
+                android:layout_marginBottom="4dp">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:id="@+id/imageView3"
-                    android:src="@drawable/usd_logo" />
+                    android:src="@drawable/usd_logo"
+                    android:layout_margin="2dp" />
 
                 <TextView
                     android:id="@+id/text_usd_price"
-                    android:textSize="12dp"
+                    android:textSize="16dp"
                     android:text="@string/dots"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:textIsSelectable="false" />
+                    android:textIsSelectable="false"
+                    android:shadowColor="#000000"
+                    android:minWidth="50dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp">
+                android:gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:id="@+id/imageView2"
-                    android:src="@drawable/btc_logo" />
+                    android:src="@drawable/btc_logo"
+                    android:layout_margin="2dp" />
 
                 <TextView
                     android:id="@+id/text_btc_price"
-                    android:textSize="12dp"
+                    android:textSize="16dp"
                     android:text="@string/dots"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:textIsSelectable="false" />
+                    android:textIsSelectable="false"
+                    android:shadowColor="#000000"
+                    android:minWidth="50dp" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="top|right">
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:layout_gravity="right"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:text=""
-        android:id="@+id/update_status"
-        android:layout_marginRight="4dp"
-        android:gravity="bottom"
-        android:layout_gravity="right"
-        android:layout_marginBottom="4dp"
-        android:textSize="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/update_status"
+            android:gravity="bottom"
+            android:textSize="12dp"
+            android:layout_gravity="bottom|right"
+            android:shadowColor="#000000" />
+    </FrameLayout>
 
 </LinearLayout>
