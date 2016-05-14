@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
 
+import com.jamieholdstock.dcrwidgets.intents.MyIntents;
+import com.jamieholdstock.dcrwidgets.widget.DcrWidget;
+
 public class WidgetSettings extends AppCompatActivity {
 
     private static final String PREFS_NAME = "com.jamieholdstock.dcrwidgets.WidgetSettings";
@@ -64,9 +67,9 @@ public class WidgetSettings extends AppCompatActivity {
 
             saveWidgetType(context, mAppWidgetId, widgetType);
 
-            // Push widget update to surface with newly set prefix
-//          AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-//            DcrWidget.update(context, appWidgetManager, mAppWidgetId);
+            Intent intent = new Intent(context, DcrWidget.class);
+            intent.setAction(MyIntents.BUTTON_PRESSED);
+            context.sendBroadcast(intent);
 
             // Make sure we pass back the original appWidgetId
             Intent resultValue = new Intent();

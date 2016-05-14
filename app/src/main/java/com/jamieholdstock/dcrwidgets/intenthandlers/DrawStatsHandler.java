@@ -3,7 +3,6 @@ package com.jamieholdstock.dcrwidgets.intenthandlers;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.jamieholdstock.dcrwidgets.L;
 import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.intents.IntentExtras;
 import com.jamieholdstock.dcrwidgets.service.DcrStats;
@@ -18,6 +17,16 @@ public class DrawStatsHandler extends IntentHandler {
     @Override
     public void handle() {
         DcrStats stats = (DcrStats) intent.getExtras().get(IntentExtras.DCR_STATS);
+
+        drawPriceStats(stats);
+        drawStakeStats(stats);
+
+        views.setTextViewText(R.id.update_status, new TimeStamp().toString());
+
+        showProgressBar(false);
+    }
+
+    private void drawPriceStats(DcrStats stats) {
         double dUsdPrice = stats.getUsdPrice();
         String usdPrice = String.format("%.2f", dUsdPrice);
         views.setTextViewText(R.id.text_usd_price, usdPrice);
@@ -25,8 +34,9 @@ public class DrawStatsHandler extends IntentHandler {
         double dBtcPrice = stats.getBtcPrice();
         String btcPrice = String.format("%.4f", dBtcPrice);
         views.setTextViewText(R.id.text_btc_price, btcPrice);
+    }
 
-
+    private void drawStakeStats(DcrStats stats) {
         double dTicketPrice = stats.getTicketPrice();
         String ticketPrice = String.format("%.2f", dTicketPrice);
         views.setTextViewText(R.id.text_ticket_price, ticketPrice);
@@ -43,12 +53,5 @@ public class DrawStatsHandler extends IntentHandler {
 
         String time = sHours + "h " + sMinutes + "m";
         views.setTextViewText(R.id.text_price_change, time);
-
-        L.l(time);
-        L.l(ticketPrice);
-
-        views.setTextViewText(R.id.update_status, new TimeStamp().toString());
-
-        showProgressBar(false);
     }
 }
