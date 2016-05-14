@@ -9,7 +9,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1.08">
 
         <ProgressBar
             style="?android:attr/progressBarStyleSmall"
@@ -31,13 +32,12 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center_horizontal">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
                 android:id="@+id/price_panel">
 
@@ -50,25 +50,23 @@
 
                     <TextView
                         android:id="@+id/textView"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:text="$"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
                         android:textIsSelectable="false"
-                        android:width="18dp"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginRight="2dp" />
+                        android:layout_marginRight="3dp" />
 
                     <TextView
                         android:id="@+id/text_usd_price"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:text="@string/dots"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:minWidth="50dp" />
+                        android:minWidth="60dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -78,20 +76,20 @@
                     android:gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:id="@+id/imageView2"
                         android:src="@drawable/btc_logo"
-                        android:layout_margin="2dp" />
+                        android:layout_marginRight="3dp" />
 
                     <TextView
                         android:id="@+id/text_btc_price"
-                        android:textSize="16dp"
+                        android:textSize="18dp"
                         android:text="@string/dots"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:minWidth="50dp" />
+                        android:minWidth="60dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -100,7 +98,6 @@
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
                 android:id="@+id/stake_panel">
 
@@ -118,16 +115,17 @@
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
                         android:layout_marginRight="4dp"
-                        android:minWidth="75dp"
+                        android:minWidth="85dp"
                         android:gravity="right" />
 
                     <TextView
                         android:id="@+id/text_ticket_price"
-                        android:textSize="16dp"
+                        android:textSize="14dp"
                         android:text="@string/dots"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:textIsSelectable="false" />
+                        android:textIsSelectable="false"
+                        android:minWidth="60dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -144,16 +142,44 @@
                         android:textIsSelectable="false"
                         android:text="Price Change:"
                         android:layout_marginRight="4dp"
-                        android:minWidth="75dp"
+                        android:minWidth="85dp"
                         android:gravity="right" />
 
                     <TextView
                         android:id="@+id/text_price_change"
-                        android:textSize="16dp"
+                        android:textSize="14dp"
                         android:text="@string/dots"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:textIsSelectable="false" />
+                        android:textIsSelectable="false"
+                        android:minWidth="60dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:textSize="12dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textIsSelectable="false"
+                        android:text="Est. New Price:"
+                        android:layout_marginRight="4dp"
+                        android:minWidth="85dp"
+                        android:gravity="right" />
+
+                    <TextView
+                        android:id="@+id/text_est_new_price"
+                        android:textSize="14dp"
+                        android:text="@string/dots"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textIsSelectable="false"
+                        android:minWidth="60dp" />
                 </LinearLayout>
 
             </LinearLayout>
