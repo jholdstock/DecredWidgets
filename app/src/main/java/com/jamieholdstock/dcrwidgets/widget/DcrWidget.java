@@ -8,8 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import com.jamieholdstock.dcrwidgets.L;
 import com.jamieholdstock.dcrwidgets.MyStrings;
 import com.jamieholdstock.dcrwidgets.R;
+import com.jamieholdstock.dcrwidgets.WidgetSettings;
 import com.jamieholdstock.dcrwidgets.intenthandlers.ButtonPressedHandler;
 import com.jamieholdstock.dcrwidgets.intenthandlers.DrawErrorHandler;
 import com.jamieholdstock.dcrwidgets.intenthandlers.DrawStatsHandler;
@@ -45,7 +47,7 @@ public class DcrWidget extends AppWidgetProvider {
                 new DrawErrorHandler(intent, views).handle();
                 break;
         }
-        
+
         pushUpdatedWidget(views, context);
     }
 
@@ -66,6 +68,8 @@ public class DcrWidget extends AppWidgetProvider {
         attachClickListener(context, views);
         int[] widgetIds = awm.getAppWidgetIds(new ComponentName(context, getClass()));
         for (int i = 0; i < widgetIds.length; i++) {
+            String widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
+            L.l(widgetType);
             awm.updateAppWidget(widgetIds[i], views);
         }
     }
