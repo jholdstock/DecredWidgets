@@ -8,6 +8,8 @@ import com.jamieholdstock.dcrwidgets.L;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+
 public class DcrStats implements Parcelable {
     private final String rawJson;
     private JSONObject jsonObject;
@@ -15,30 +17,36 @@ public class DcrStats implements Parcelable {
         this.rawJson = rawJson;
     }
 
-    public double getUsdPrice() {
+    public String getUsdPrice() {
         double usd_price = getDouble("usd_price");
         double btc_last = getDouble("btc_last");
-        return usd_price * btc_last;
+        double dUsdPrice = usd_price * btc_last;
+
+        DecimalFormat df = new DecimalFormat("###0.00");
+        return df.format(dUsdPrice);
     }
 
-    public double getTicketPrice() {
-        return getDouble("sbits");
+    public String getTicketPrice() {
+        DecimalFormat df = new DecimalFormat("###0.00");
+        return df.format(getDouble("sbits"));
     }
 
-    public double getBtcPrice() {
-        return getDouble("btc_last");
+    public String getBtcPrice() {
+        DecimalFormat df = new DecimalFormat("0.0000");
+        return df.format(getDouble("btc_last"));
     }
 
-    public double getEstNextPrice() {
-        return getDouble("est_sbits");
-    }
-
-    private double getAverageBlockTime() {
-        return getDouble("average_time");
+    public String getEstNextPrice() {
+        DecimalFormat df = new DecimalFormat("###0.00");
+        return df.format(getDouble("est_sbits"));
     }
 
     public double getPriceChangeInSeconds() {
         return (getBlocksToPriceChange() * getAverageBlockTime());
+    }
+
+    private double getAverageBlockTime() {
+        return getDouble("average_time");
     }
 
     private double getBlocksToPriceChange() {

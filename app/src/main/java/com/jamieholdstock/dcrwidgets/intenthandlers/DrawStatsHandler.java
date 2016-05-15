@@ -28,19 +28,12 @@ public class DrawStatsHandler extends IntentHandler {
     }
 
     private void drawPriceStats(DcrStats stats) {
-        double dUsdPrice = stats.getUsdPrice();
-        String usdPrice = String.format("%.2f", dUsdPrice);
-        views.setTextViewText(R.id.text_usd_price, usdPrice);
-
-        double dBtcPrice = stats.getBtcPrice();
-        String btcPrice = String.format("%.4f", dBtcPrice);
-        views.setTextViewText(R.id.text_btc_price, btcPrice);
+        views.setTextViewText(R.id.text_usd_price, stats.getUsdPrice());
+        views.setTextViewText(R.id.text_btc_price, stats.getBtcPrice());
     }
 
     private void drawStakeStats(DcrStats stats) {
-        double dTicketPrice = stats.getTicketPrice();
-        String ticketPrice = String.format("%.2f", dTicketPrice);
-        views.setTextViewText(R.id.text_ticket_price, ticketPrice);
+        views.setTextViewText(R.id.text_ticket_price, stats.getTicketPrice());
 
         double ticketChange = stats.getPriceChangeInSeconds();
 
@@ -55,8 +48,6 @@ public class DrawStatsHandler extends IntentHandler {
         String time = sHours + "h " + sMinutes + "m";
         views.setTextViewText(R.id.text_price_change, time);
 
-        double dEstNext = stats.getEstNextPrice();
-        String estNext = String.format("%.2f", dEstNext);
-        views.setTextViewText(R.id.text_est_new_price, estNext);
+        views.setTextViewText(R.id.text_est_new_price, stats.getEstNextPrice());
     }
 }
