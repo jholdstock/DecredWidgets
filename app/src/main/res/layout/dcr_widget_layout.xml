@@ -21,6 +21,7 @@
             android:layout_margin="4dp" />
 
         <TextView
+            style="@style/ShadowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -51,9 +52,10 @@
                     android:layout_marginBottom="4dp">
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/textView"
                         android:textSize="18dp"
-                        android:text="$"
+                        android:text="@string/default_currency"
                         android:layout_height="wrap_content"
                         android:layout_width="20dp"
                         android:textIsSelectable="false"
@@ -62,6 +64,7 @@
                         android:layout_marginRight="3dp" />
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/text_usd_price"
                         android:textSize="18dp"
                         android:text="@string/dots"
@@ -85,6 +88,7 @@
                         android:layout_marginRight="3dp" />
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/text_btc_price"
                         android:textSize="18dp"
                         android:text="@string/dots"
@@ -110,9 +114,10 @@
                     android:gravity="center_vertical">
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/textView3"
                         android:textSize="12dp"
-                        android:text="Ticket Price:"
+                        android:text="@string/ticket_price"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
@@ -121,6 +126,7 @@
                         android:gravity="right" />
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/text_ticket_price"
                         android:textSize="14dp"
                         android:text="@string/dots"
@@ -137,17 +143,19 @@
                     android:gravity="center_vertical" >
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/textView4"
                         android:textSize="12dp"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:text="Price Change:"
+                        android:text="@string/price_change"
                         android:layout_marginRight="4dp"
                         android:minWidth="85dp"
                         android:gravity="right" />
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/text_price_change"
                         android:textSize="14dp"
                         android:text="@string/dots"
@@ -164,17 +172,19 @@
                     android:gravity="center_vertical" >
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/textView2"
                         android:textSize="12dp"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:text="Est. New Price:"
+                        android:text="@string/est_new_price"
                         android:layout_marginRight="4dp"
                         android:minWidth="85dp"
                         android:gravity="right" />
 
                     <TextView
+                        style="@style/ShadowText"
                         android:id="@+id/text_est_new_price"
                         android:textSize="14dp"
                         android:text="@string/dots"

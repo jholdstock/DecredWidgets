@@ -6,4 +6,8 @@
     <string name="stake_radio_button">Stake info</string>
     <string name="choose_a_widget">Choose a widget</string>
     <string name="save_button">Save</string>
+    <string name="ticket_price">Ticket Price:</string>
+    <string name="price_change">Price Change:</string>
+    <string name="est_new_price">Est. New Price:</string>
+    <string name="default_currency">$</string>
 </resources>
