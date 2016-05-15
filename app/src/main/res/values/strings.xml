@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dcr Widgets</string>
+    <string name="app_name">Decred Widgets</string>
     <string name="offline">Offline</string>
     <string name="dots">...</string>
     <string name="price_radio_button">Last sale price</string>
