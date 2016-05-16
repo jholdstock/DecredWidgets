@@ -21,9 +21,9 @@ public class DrawStatsHandler extends IntentHandler {
 
         drawPriceStats(stats);
         drawStakeStats(stats);
+        drawWorkStats(stats);
 
         views.setTextViewText(R.id.update_status, new TimeStamp().toString());
-
         showProgressBar(false);
     }
 
@@ -49,5 +49,10 @@ public class DrawStatsHandler extends IntentHandler {
         views.setTextViewText(R.id.text_price_change, time);
 
         views.setTextViewText(R.id.text_est_new_price, stats.getEstNextPrice());
+    }
+
+    private void drawWorkStats(DcrStats stats) {
+        views.setTextViewText(R.id.text_difficulty, stats.getDifficulty());
+        views.setTextViewText(R.id.text_network_hash, stats.getNetworkHash());
     }
 }

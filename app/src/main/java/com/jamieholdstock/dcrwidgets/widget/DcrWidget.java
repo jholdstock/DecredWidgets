@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.RemoteViews;
 
 import com.jamieholdstock.dcrwidgets.R;
-import com.jamieholdstock.dcrwidgets.WidgetSettings;
+import com.jamieholdstock.dcrwidgets.activity.WidgetSettings;
 import com.jamieholdstock.dcrwidgets.intenthandlers.ButtonPressedHandler;
 import com.jamieholdstock.dcrwidgets.intenthandlers.DrawErrorHandler;
 import com.jamieholdstock.dcrwidgets.intenthandlers.DrawStatsHandler;
@@ -70,13 +70,21 @@ public class DcrWidget extends AppWidgetProvider {
 
             switch(widgetType) {
                 case PRICE:
-                    views.setViewVisibility(R.id.stake_panel, View.GONE);
                     views.setViewVisibility(R.id.price_panel, View.VISIBLE);
+                    views.setViewVisibility(R.id.stake_panel, View.GONE);
+                    views.setViewVisibility(R.id.work_panel, View.GONE);
                     break;
 
                 case STAKE:
                     views.setViewVisibility(R.id.price_panel, View.GONE);
                     views.setViewVisibility(R.id.stake_panel, View.VISIBLE);
+                    views.setViewVisibility(R.id.work_panel, View.GONE);
+                    break;
+
+                case WORK:
+                    views.setViewVisibility(R.id.price_panel, View.GONE);
+                    views.setViewVisibility(R.id.stake_panel, View.GONE);
+                    views.setViewVisibility(R.id.work_panel, View.VISIBLE);
                     break;
             }
             awm.updateAppWidget(widgetIds[i], views);

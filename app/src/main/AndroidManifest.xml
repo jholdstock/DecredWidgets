@@ -21,7 +21,7 @@
         </receiver>
 
         <activity
-            android:name=".WidgetSettings"
+            android:name=".activity.WidgetSettings"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"
             android:label="@string/choose_a_widget" >
             <intent-filter>

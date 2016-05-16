@@ -26,6 +26,18 @@ public class DcrStats implements Parcelable {
         return df.format(dUsdPrice);
     }
 
+    public String getDifficulty() {
+        DecimalFormat df = new DecimalFormat("####,###,###");
+        return df.format(getDouble("difficulty"));
+    }
+
+    public String getNetworkHash() {
+        DecimalFormat df = new DecimalFormat("########0.000");
+        double networkHash = getDouble("networkhashps");
+        networkHash = networkHash / 1024 / 1024 / 1024 / 1024;
+        return df.format(networkHash);
+    }
+
     public String getTicketPrice() {
         DecimalFormat df = new DecimalFormat("###0.00");
         return df.format(getDouble("sbits"));

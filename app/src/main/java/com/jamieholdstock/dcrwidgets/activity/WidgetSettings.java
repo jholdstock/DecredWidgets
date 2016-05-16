@@ -1,4 +1,4 @@
-package com.jamieholdstock.dcrwidgets;
+package com.jamieholdstock.dcrwidgets.activity;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -9,16 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
 
+import com.jamieholdstock.dcrwidgets.R;
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.widget.DcrWidget;
 import com.jamieholdstock.dcrwidgets.widget.WidgetType;
 
 import static com.jamieholdstock.dcrwidgets.widget.WidgetType.PRICE;
 import static com.jamieholdstock.dcrwidgets.widget.WidgetType.STAKE;
+import static com.jamieholdstock.dcrwidgets.widget.WidgetType.WORK;
 
 public class WidgetSettings extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "com.jamieholdstock.dcrwidgets.WidgetSettings";
+    private static final String PREFS_NAME = "com.jamieholdstock.dcrwidgets.activity.WidgetSettings";
     private static final String PREF_PREFIX_KEY = "widget_type";
 
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -60,13 +62,16 @@ public class WidgetSettings extends AppCompatActivity {
             final Context context = WidgetSettings.this;
 
             RadioButton priceRadio = (RadioButton)findViewById(R.id.salePriceBtn);
-
+            RadioButton stakeRadio = (RadioButton)findViewById(R.id.stakeInfoBtn);
             WidgetType widgetType;
             if (priceRadio.isChecked()) {
                 widgetType = PRICE;
             }
-            else {
+            else if (stakeRadio.isChecked()) {
                 widgetType = STAKE;
+            }
+            else {
+                widgetType = WORK;
             }
 
             saveWidgetType(context, mAppWidgetId, widgetType);
