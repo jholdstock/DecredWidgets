@@ -34,7 +34,7 @@ public class DcrStats implements Parcelable {
     public String getNetworkHash() {
         DecimalFormat df = new DecimalFormat("########0.000");
         double networkHash = getDouble("networkhashps");
-        networkHash = networkHash / 1024 / 1024 / 1024 / 1024;
+        networkHash = networkHash / 1000 / 1000 / 1000 / 1000;
         return df.format(networkHash);
     }
 
