@@ -66,14 +66,18 @@ public class DcrWidget extends AppWidgetProvider {
         attachClickListener(context, views);
         int[] widgetIds = awm.getAppWidgetIds(new ComponentName(context, getClass()));
         for (int i = 0; i < widgetIds.length; i++) {
-            String widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
+            WidgetType widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
 
-            if (widgetType.equals("price")) {
-                views.setViewVisibility(R.id.stake_panel, View.GONE);
-                views.setViewVisibility(R.id.price_panel, View.VISIBLE);
-            } else {
-                views.setViewVisibility(R.id.price_panel, View.GONE);
-                views.setViewVisibility(R.id.stake_panel, View.VISIBLE);
+            switch(widgetType) {
+                case PRICE:
+                    views.setViewVisibility(R.id.stake_panel, View.GONE);
+                    views.setViewVisibility(R.id.price_panel, View.VISIBLE);
+                    break;
+
+                case STAKE:
+                    views.setViewVisibility(R.id.price_panel, View.GONE);
+                    views.setViewVisibility(R.id.stake_panel, View.VISIBLE);
+                    break;
             }
             awm.updateAppWidget(widgetIds[i], views);
         }

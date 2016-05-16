@@ -11,6 +11,10 @@ import android.widget.RadioButton;
 
 import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.widget.DcrWidget;
+import com.jamieholdstock.dcrwidgets.widget.WidgetType;
+
+import static com.jamieholdstock.dcrwidgets.widget.WidgetType.PRICE;
+import static com.jamieholdstock.dcrwidgets.widget.WidgetType.STAKE;
 
 public class WidgetSettings extends AppCompatActivity {
 
@@ -24,8 +28,8 @@ public class WidgetSettings extends AppCompatActivity {
     }
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
 
         // Set the result to CANCELED.  This will cause the widget host to cancel
         // out of the widget placement if they press the back button.
@@ -55,14 +59,14 @@ public class WidgetSettings extends AppCompatActivity {
         public void onClick(View v) {
             final Context context = WidgetSettings.this;
 
-            RadioButton saleRadio = (RadioButton)findViewById(R.id.salePriceBtn);
+            RadioButton priceRadio = (RadioButton)findViewById(R.id.salePriceBtn);
 
-            String widgetType;
-            if (saleRadio.isChecked()) {
-                widgetType = "price";
+            WidgetType widgetType;
+            if (priceRadio.isChecked()) {
+                widgetType = PRICE;
             }
             else {
-                widgetType = "stake";
+                widgetType = STAKE;
             }
 
             saveWidgetType(context, mAppWidgetId, widgetType);
@@ -79,14 +83,15 @@ public class WidgetSettings extends AppCompatActivity {
         }
     };
 
-    public static void saveWidgetType(Context context, int appWidgetId, String widgetType) {
+    public static void saveWidgetType(Context context, int appWidgetId, WidgetType widgetType) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
-        prefs.putString(PREF_PREFIX_KEY + appWidgetId, widgetType);
+        prefs.putInt(PREF_PREFIX_KEY + appWidgetId, widgetType.ordinal());
         prefs.commit();
     }
 
-    public static String loadWidgetType(Context context, int appWidgetId) {
+    public static WidgetType loadWidgetType(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
-        return  prefs.getString(PREF_PREFIX_KEY + appWidgetId, "price");
+        int ordinal = prefs.getInt(PREF_PREFIX_KEY + appWidgetId, 0);
+        return WidgetType.values()[ordinal];
     }
 }
