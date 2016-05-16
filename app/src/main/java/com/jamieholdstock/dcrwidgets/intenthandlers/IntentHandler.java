@@ -27,4 +27,22 @@ abstract public class IntentHandler {
             views.setViewVisibility(R.id.progressBar, View.GONE);
         }
     }
+
+    protected void showInAllStats(String show) {
+        int[] ids = {
+                R.id.text_btc_price,
+                R.id.text_usd_price,
+                R.id.text_ticket_price,
+                R.id.text_price_change,
+                R.id.text_est_new_price,
+                R.id.text_network_hash,
+                R.id.text_difficulty,
+                R.id.update_status
+        };
+
+        for (int id:ids) {
+            views.setTextViewText(id, show);
+        }
+    }
+
 }

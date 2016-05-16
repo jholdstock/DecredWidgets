@@ -14,20 +14,8 @@ public class DrawErrorHandler extends IntentHandler {
 
     @Override
     public void handle(Context context) {
-        // Price
-        views.setTextViewText(R.id.text_btc_price, "");
-        views.setTextViewText(R.id.text_usd_price, "");
+        showInAllStats("");
 
-        // Stake
-        views.setTextViewText(R.id.text_ticket_price, "");
-        views.setTextViewText(R.id.text_price_change, "");
-        views.setTextViewText(R.id.text_est_new_price, "");
-
-        // Work
-        views.setTextViewText(R.id.text_difficulty, "");
-        views.setTextViewText(R.id.text_network_hash, "");
-
-        // All
         views.setTextViewText(R.id.update_status, context.getString(R.string.offline));
         showProgressBar(false);
     }

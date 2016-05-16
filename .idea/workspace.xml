@@ -96,43 +96,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DcrStats.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStats.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2934783">
-              <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.8490567">
-              <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DcrWidget.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/widget/DcrWidget.java">
+      <file leaf-file-name="ButtonPressedHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#438#470#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawStatsHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawStatsHandler.java">
+      <file leaf-file-name="DrawErrorHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawErrorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <folding>
+                <element signature="e#486#521#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntentHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/IntentHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7128378">
+              <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -1785,7 +1777,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dcr_menu_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/dcr_widget_provider.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intents/MyIntents.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/IntentHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/MyStrings.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -1796,11 +1787,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/widget/WidgetType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/activity/WidgetSettings.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dcr_settings_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawErrorHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawStatsHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStats.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawErrorHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/IntentHandler.java" />
       </list>
     </option>
   </component>
@@ -2074,6 +2066,8 @@
     <property name="SearchEverywhereHistoryKey" value="buttonpre&#9;FILE&#9;file://C:/code/github/DecredWidgets/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java&#10;service&#9;FILE&#9;file://C:/code/github/DecredWidgets/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStatsService.java&#10;statsserv&#9;FILE&#9;file://C:/code/github/DecredWidgets/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStatsService.java&#10;manif&#9;FILE&#9;file://C:/_code/DecredWidgets/app/src/main/AndroidManifest.xml" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -2378,7 +2372,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32419354" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2386,7 +2380,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14657739" sideWeight="0.53064513" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.50595236" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.65806454" sideWeight="0.4940476" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.65806454" sideWeight="0.4940476" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2691,13 +2685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/IntentHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40202704">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24028268">
@@ -2781,48 +2768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawErrorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6030405">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-          <folding>
-            <element signature="e#483#515#0" expanded="true" />
-            <element signature="e#569#601#0" expanded="true" />
-            <element signature="e#676#708#0" expanded="true" />
-            <element signature="e#765#797#0" expanded="true" />
-            <element signature="e#855#887#0" expanded="true" />
-            <element signature="e#961#993#0" expanded="true" />
-            <element signature="e#1048#1080#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawStatsHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/widget/DcrWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dcr_widget_layout.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -2830,6 +2775,14 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -2842,10 +2795,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/service/DcrStats.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/widget/DcrWidget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2934783">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.7179054">
+          <caret line="85" column="71" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawStatsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5405405">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/ButtonPressedHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#438#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/DrawErrorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#486#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/jamieholdstock/dcrwidgets/intenthandlers/IntentHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7128378">
+          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
           <folding />
         </state>
       </provider>
