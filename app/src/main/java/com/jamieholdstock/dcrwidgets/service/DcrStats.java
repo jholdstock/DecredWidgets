@@ -22,24 +22,24 @@ public class DcrStats implements Parcelable {
         double btc_last = getDouble("btc_last");
         double dUsdPrice = usd_price * btc_last;
 
-        DecimalFormat df = new DecimalFormat("###0.00");
+        DecimalFormat df = new DecimalFormat("####0.00");
         return df.format(dUsdPrice);
     }
 
     public String getDifficulty() {
-        DecimalFormat df = new DecimalFormat("####,###,###");
+        DecimalFormat df = new DecimalFormat("###,###,###,###");
         return df.format(getDouble("difficulty"));
     }
 
     public String getNetworkHash() {
-        DecimalFormat df = new DecimalFormat("########0.000");
+        DecimalFormat df = new DecimalFormat("####0.00");
         double networkHash = getDouble("networkhashps");
         networkHash = networkHash / 1000 / 1000 / 1000 / 1000;
         return df.format(networkHash);
     }
 
     public String getTicketPrice() {
-        DecimalFormat df = new DecimalFormat("###0.00");
+        DecimalFormat df = new DecimalFormat("#####0.00");
         return df.format(getDouble("sbits"));
     }
 
@@ -49,7 +49,7 @@ public class DcrStats implements Parcelable {
     }
 
     public String getEstNextPrice() {
-        DecimalFormat df = new DecimalFormat("###0.00");
+        DecimalFormat df = new DecimalFormat("#####0.00");
         return df.format(getDouble("est_sbits"));
     }
 

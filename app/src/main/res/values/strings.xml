@@ -1,16 +1,25 @@
 <resources>
+    <!--General-->
     <string name="app_name">Decred Widgets</string>
     <string name="offline">Offline</string>
     <string name="dots">...</string>
+
+    <!--Settings-->
+    <string name="choose_a_widget">Choose a widget:</string>
     <string name="price_radio_button">DCR Last sale price</string>
     <string name="stake_radio_button">PoS info</string>
-    <string name="choose_a_widget">Choose a widget</string>
-    <string name="save_button">Save</string>
+    <string name="work_radio_button">PoW info</string>
+    <string name="save_button">Choose</string>
+
+    <!--Stake Widget-->
     <string name="ticket_price">Ticket Price:</string>
     <string name="price_change">Price Change:</string>
     <string name="est_new_price">Est. New Price:</string>
+
+    <!--Price Widget-->
     <string name="default_currency">$</string>
+
+    <!--Work Widget-->
     <string name="difficulty">Difficulty:</string>
-    <string name="network_th_s">Network TH/s:</string>
-    <string name="work_info">PoW info</string>
+    <string name="network_th_s">Network Th/s:</string>
 </resources>
