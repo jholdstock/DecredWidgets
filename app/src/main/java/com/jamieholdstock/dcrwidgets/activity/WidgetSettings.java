@@ -33,17 +33,12 @@ public class WidgetSettings extends AppCompatActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        // Set the result to CANCELED.  This will cause the widget host to cancel
-        // out of the widget placement if they press the back button.
         setResult(RESULT_CANCELED);
 
-        // Set the view layout resource to use.
         setContentView(R.layout.dcr_settings_layout);
 
-        // Bind the action for the save button.
         findViewById(R.id.save_button).setOnClickListener(mOnClickListener);
 
-        // Find the widget id from the intent.
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras != null) {
@@ -51,7 +46,6 @@ public class WidgetSettings extends AppCompatActivity {
                     AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
         }
 
-        // If they gave us an intent without the widget id, just bail.
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish();
         }

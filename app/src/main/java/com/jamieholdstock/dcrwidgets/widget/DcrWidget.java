@@ -68,25 +68,28 @@ public class DcrWidget extends AppWidgetProvider {
         for (int i = 0; i < widgetIds.length; i++) {
             WidgetType widgetType = WidgetSettings.loadWidgetType(context, widgetIds[i]);
 
+            views.setViewVisibility(R.id.price_panel, View.GONE);
+            views.setViewVisibility(R.id.stake_panel, View.GONE);
+            views.setViewVisibility(R.id.work_panel, View.GONE);
+
+            int makeVisible;
+
             switch(widgetType) {
                 case PRICE:
-                    views.setViewVisibility(R.id.price_panel, View.VISIBLE);
-                    views.setViewVisibility(R.id.stake_panel, View.GONE);
-                    views.setViewVisibility(R.id.work_panel, View.GONE);
+                    makeVisible = R.id.price_panel;
                     break;
 
                 case STAKE:
-                    views.setViewVisibility(R.id.price_panel, View.GONE);
-                    views.setViewVisibility(R.id.stake_panel, View.VISIBLE);
-                    views.setViewVisibility(R.id.work_panel, View.GONE);
+                    makeVisible = R.id.stake_panel;
                     break;
 
-                case WORK:
-                    views.setViewVisibility(R.id.price_panel, View.GONE);
-                    views.setViewVisibility(R.id.stake_panel, View.GONE);
-                    views.setViewVisibility(R.id.work_panel, View.VISIBLE);
+                default:
+                    makeVisible = R.id.work_panel;
                     break;
             }
+
+            views.setViewVisibility(makeVisible, View.VISIBLE);
+
             awm.updateAppWidget(widgetIds[i], views);
         }
     }
