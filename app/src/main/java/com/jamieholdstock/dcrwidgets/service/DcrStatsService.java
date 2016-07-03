@@ -16,8 +16,8 @@ import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.widget.DcrWidget;
 
 public class DcrStatsService extends IntentService {
-    private final static String DCR_STATS_URL = "https://dcrstats.com";
-    //private final static String DCR_STATS_URL = "http://10.0.2.2:8090";
+    private final static DcrStatsUrl DCR_STATS_URL = new DcrStatsUrl("https://dcrstats.com");
+    //private final static DcrStatsUrl DCR_STATS_URL = new DcrStatsUrl("http://10.0.2.2:8090");
 
     private final static int TIMEOUT_MS = 3000;
     private final static int MAX_RETRIES = 0;
@@ -51,10 +51,9 @@ public class DcrStatsService extends IntentService {
 
     public void getStats() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = DCR_STATS_URL + "/api/v1/get_stats";
 
-        L.l("Service sending GET to " + url);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        L.l("Service sending GET to " + DCR_STATS_URL);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, DCR_STATS_URL.toString(),
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
