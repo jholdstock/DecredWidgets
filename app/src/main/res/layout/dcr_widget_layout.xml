@@ -37,7 +37,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center_horizontal|top">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -48,56 +48,93 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:paddingRight="6dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         style="@style/ShadowText"
-                        android:id="@+id/textView"
+                        android:id="@+id/textView9"
                         android:textSize="12dp"
-                        android:text="@string/dcr_usd_label"
+                        android:text="@string/price_heading"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal" />
 
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/text_usd_price"
-                        android:textSize="12dp"
-                        android:text="@string/dots"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:singleLine="true" />
-                </LinearLayout>
+                        android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:background="@drawable/border"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="6dp"
+                            android:layout_marginBottom="2dp">
 
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/textView6"
-                        android:textSize="12dp"
-                        android:text="@string/dcr_btc_label"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:textStyle="bold" />
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/textView6"
+                                android:textSize="11dp"
+                                android:text="@string/dcr_btc_label"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:layout_gravity="center" />
 
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/text_btc_price"
-                        android:textSize="12dp"
-                        android:text="@string/dots"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:singleLine="true" />
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/text_btc_price"
+                                android:textSize="12dp"
+                                android:text="@string/dots"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:singleLine="true"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:background="@drawable/border"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="6dp"
+                            android:layout_marginBottom="2dp">
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/textView"
+                                android:textSize="11dp"
+                                android:text="@string/dcr_usd_label"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/text_usd_price"
+                                android:textSize="12dp"
+                                android:text="@string/dots"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:singleLine="true"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -132,11 +169,13 @@
                         android:layout_gravity="center_horizontal">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="4dp">
+                            android:padding="2dp"
+                            android:background="@drawable/border"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
 
                             <TextView
                                 style="@style/ShadowText"
@@ -147,7 +186,7 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
 
                             <TextView
                                 style="@style/ShadowText"
@@ -158,15 +197,17 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="4dp">
+                            android:layout_gravity="center"
+                            android:padding="2dp"
+                            android:background="@drawable/border"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 style="@style/ShadowText"
@@ -177,7 +218,7 @@
                                 android:textIsSelectable="false"
                                 android:text="@string/price_change"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
 
                             <TextView
                                 style="@style/ShadowText"
@@ -188,14 +229,17 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_gravity="center_horizontal">
+                            android:layout_gravity="center"
+                            android:padding="2dp"
+                            android:background="@drawable/border"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 style="@style/ShadowText"
@@ -206,7 +250,7 @@
                                 android:textIsSelectable="false"
                                 android:text="@string/est_new_price"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
 
                             <TextView
                                 style="@style/ShadowText"
@@ -217,7 +261,7 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center_horizontal" />
+                                android:layout_gravity="center" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -233,69 +277,102 @@
                 android:id="@+id/work_panel" >
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="center_horizontal" >
 
                     <TextView
                         style="@style/ShadowText"
-                        android:id="@+id/textView5"
-                        android:textSize="10dp"
-                        android:text="@string/network_th_s"
+                        android:id="@+id/textView10"
+                        android:textSize="12dp"
+                        android:text="@string/pow_network_heading"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
-                        android:layout_marginRight="4dp"
-                        android:minWidth="85dp"
-                        android:gravity="right"
-                        android:singleLine="true" />
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal" />
 
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/text_network_hash"
-                        android:textSize="10dp"
-                        android:text="@string/dots"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:minWidth="60dp"
-                        android:singleLine="true" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/textView7"
-                        android:textSize="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:text="@string/difficulty"
-                        android:layout_marginRight="4dp"
-                        android:minWidth="85dp"
-                        android:gravity="right"
-                        android:singleLine="true" />
+                        android:layout_gravity="center_horizontal" >
 
-                    <TextView
-                        style="@style/ShadowText"
-                        android:id="@+id/text_difficulty"
-                        android:textSize="10dp"
-                        android:text="@string/dots"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textIsSelectable="false"
-                        android:minWidth="60dp"
-                        android:singleLine="true" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border"
+                            android:padding="2dp"
+                            android:layout_margin="2dp"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/textView7"
+                                android:textSize="11dp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:text="@string/difficulty"
+                                android:singleLine="true"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp" />
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/text_difficulty"
+                                android:textSize="13dp"
+                                android:text="@string/dots"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:singleLine="true"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/border"
+                            android:padding="2dp"
+                            android:layout_margin="2dp"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/textView5"
+                                android:textSize="11dp"
+                                android:text="@string/network_th_s"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:singleLine="true"
+                                android:layout_gravity="center" />
+
+                            <TextView
+                                style="@style/ShadowText"
+                                android:id="@+id/text_network_hash"
+                                android:textSize="13dp"
+                                android:text="@string/dots"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:textIsSelectable="false"
+                                android:singleLine="true"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
     </FrameLayout>
 
 </LinearLayout>

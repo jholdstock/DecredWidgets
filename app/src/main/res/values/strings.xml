@@ -11,18 +11,20 @@
     <string name="work_radio_button">PoW info</string>
     <string name="save_button">Choose</string>
 
-    <!--Stake Widget-->
-    <string name="pos_tickets_heading">PoS Ticket Price</string>
-    <string name="ticket_price">Current</string>
-    <string name="price_change">Change in</string>
-    <string name="est_new_price">Est. New</string>
-
     <!--Price Widget-->
+    <string name="price_heading">Last Sale Price</string>
     <string name="dcr_btc_label">DCR/BTC</string>
     <string name="dcr_usd_label">DCR/USD</string>
 
+    <!--Stake Widget-->
+    <string name="pos_tickets_heading">PoS Ticket Price</string>
+    <string name="ticket_price">Current</string>
+    <string name="price_change">Change</string>
+    <string name="est_new_price">Est. New</string>
+
     <!--Work Widget-->
-    <string name="difficulty">Difficulty:</string>
-    <string name="network_th_s">Network Th/s:</string>
+    <string name="pow_network_heading">PoW Network</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="network_th_s">Hashrate (Th/s)</string>
 
 </resources>
