@@ -8,19 +8,40 @@ import com.jamieholdstock.dcrwidgets.L;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class DcrStats implements Parcelable {
-    private final String rawJson;
+
     private JSONObject jsonObject;
+    private final String rawJson;
+
+    private Double usd_price;
+    private Double btc_last;
+    private Double difficulty;
+    private Double sbits;
+    private Double est_sbits;
+
+    private Long average_time;
+    private Long networkhashps;
+    private Long blocks;
+
     public DcrStats(String rawJson) {
         this.rawJson = rawJson;
+
+        usd_price = getDouble("usd_price");
+        btc_last = getDouble("btc_last");
+        difficulty = getDouble("difficulty");
+        sbits = getDouble("sbits");
+        est_sbits = getDouble("est_sbits");
+
+        average_time = getLong("average_time");
+        networkhashps = getLong("networkhashps");
+        blocks = getLong("blocks");
     }
 
     public String getUsdPrice() {
-        double usd_price = getDouble("usd_price");
-        double btc_last = getDouble("btc_last");
-        double dUsdPrice = usd_price * btc_last;
+        Double dUsdPrice = usd_price * btc_last;
 
         DecimalFormat df = new DecimalFormat("####0.00");
         return df.format(dUsdPrice);
@@ -28,42 +49,51 @@ public class DcrStats implements Parcelable {
 
     public String getDifficulty() {
         DecimalFormat df = new DecimalFormat("###,###,###,###");
-        return df.format(getDouble("difficulty"));
+        return df.format(difficulty);
     }
 
-    public double getNetworkHash() {
-        return getDouble("networkhashps");
+    public Long getNetworkHash() {
+        return networkhashps;
     }
 
     public String getTicketPrice() {
-        DecimalFormat df = new DecimalFormat("#####0.00");
-        return df.format(getDouble("sbits"));
+        BigDecimal bd = new BigDecimal(sbits);
+        BigDecimal rounded = bd.setScale(2, BigDecimal.ROUND_CEILING);
+        return rounded.toPlainString();
     }
 
     public String getBtcPrice() {
         DecimalFormat df = new DecimalFormat("0.0000");
-        return df.format(getDouble("btc_last"));
+        return df.format(btc_last);
     }
 
     public String getEstNextPrice() {
         DecimalFormat df = new DecimalFormat("#####0.00");
-        return df.format(getDouble("est_sbits"));
+        return df.format(est_sbits);
     }
 
-    public double getPriceChangeInSeconds() {
+    public Long getPriceChangeInSeconds() {
         return (getBlocksToPriceChange() * getAverageBlockTime());
     }
 
-    private double getAverageBlockTime() {
-        return getDouble("average_time");
+    private Long getAverageBlockTime() {
+        return average_time;
     }
 
-    private double getBlocksToPriceChange() {
-        double totalBlocks = getDouble("blocks");
-        return 144 - (totalBlocks % 144);
+    private Long getBlocksToPriceChange() {
+        return 144 - (blocks % 144);
     }
 
-    private double getDouble(String id) {
+    private Long getLong(String id) {
+        try {
+            return getJsonObject().getLong(id);
+        } catch (JSONException e) {
+            L.l(e.getLocalizedMessage());
+            throw new RuntimeException("JSON PARSE ERROR! Looking for ID '" + id + "'\nRaw Json: " + rawJson);
+        }
+    }
+
+    private Double getDouble(String id) {
         try {
             return getJsonObject().getDouble(id);
         } catch (JSONException e) {
@@ -105,6 +135,6 @@ public class DcrStats implements Parcelable {
     };
 
     private DcrStats(Parcel in) {
-        rawJson = in.readString();
+        this(in.readString());
     }
 }

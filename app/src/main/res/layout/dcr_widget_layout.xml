@@ -317,9 +317,7 @@
                                 android:textIsSelectable="false"
                                 android:text="@string/difficulty"
                                 android:singleLine="true"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="4dp"
-                                android:layout_marginRight="4dp" />
+                                android:layout_gravity="center" />
 
                             <TextView
                                 style="@style/ShadowText"
