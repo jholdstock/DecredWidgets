@@ -1,4 +1,4 @@
-package com.jamieholdstock.dcrwidgets;
+package com.jamieholdstock.dcrwidgets.intenthandlers;
 
 import java.text.DecimalFormat;
 import java.util.Map;

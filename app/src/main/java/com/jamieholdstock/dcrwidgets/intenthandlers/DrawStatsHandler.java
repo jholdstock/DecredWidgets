@@ -37,22 +37,16 @@ public class DrawStatsHandler extends IntentHandler {
 
         double ticketChange = stats.getPriceChangeInSeconds();
 
-        double hours = Math.floor(ticketChange / (60 * 60));
-
-        double divisor_for_minutes = ticketChange % (60 * 60);
-
-        double minutes = Math.floor(divisor_for_minutes / 60);
-        String sHours = Integer.toString((int) hours);
-        String sMinutes = Integer.toString((int) minutes);
-
-        String time = sHours + "h " + sMinutes + "m";
-        views.setTextViewText(R.id.text_price_change, time);
+        views.setTextViewText(R.id.text_price_change, new ChangeTime(ticketChange).format());
 
         views.setTextViewText(R.id.text_est_new_price, stats.getEstNextPrice());
     }
 
     private void drawWorkStats(DcrStats stats) {
         views.setTextViewText(R.id.text_difficulty, stats.getDifficulty());
-        views.setTextViewText(R.id.text_network_hash, stats.getNetworkHash());
+
+        double networkHash = stats.getNetworkHash();
+
+        views.setTextViewText(R.id.text_network_hash,new HashRate(networkHash).format() + "h/s" );
     }
 }

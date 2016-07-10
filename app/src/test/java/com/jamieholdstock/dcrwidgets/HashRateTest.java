@@ -1,5 +1,7 @@
 package com.jamieholdstock.dcrwidgets;
 
+import com.jamieholdstock.dcrwidgets.intenthandlers.HashRate;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,7 +3,6 @@ package com.jamieholdstock.dcrwidgets.service;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.jamieholdstock.dcrwidgets.HashRate;
 import com.jamieholdstock.dcrwidgets.L;
 
 import org.json.JSONException;
@@ -32,9 +31,8 @@ public class DcrStats implements Parcelable {
         return df.format(getDouble("difficulty"));
     }
 
-    public String getNetworkHash() {
-        double networkHash = getDouble("networkhashps");
-        return new HashRate(networkHash).format() + "h/s";
+    public double getNetworkHash() {
+        return getDouble("networkhashps");
     }
 
     public String getTicketPrice() {
