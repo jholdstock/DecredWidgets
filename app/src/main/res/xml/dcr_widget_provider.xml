@@ -4,7 +4,7 @@
     android:updatePeriodMillis="1800000"
     android:previewImage="@drawable/dcr_widget_preview"
     android:initialLayout="@layout/dcr_widget_layout"
-    android:resizeMode="none"
+    android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:configure="com.jamieholdstock.dcrwidgets.activity.WidgetSettings" >
 </appwidget-provider>

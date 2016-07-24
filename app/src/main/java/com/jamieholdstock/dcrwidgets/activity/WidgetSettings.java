@@ -14,9 +14,7 @@ import com.jamieholdstock.dcrwidgets.intents.MyIntents;
 import com.jamieholdstock.dcrwidgets.widget.DcrWidget;
 import com.jamieholdstock.dcrwidgets.widget.WidgetType;
 
-import static com.jamieholdstock.dcrwidgets.widget.WidgetType.PRICE;
-import static com.jamieholdstock.dcrwidgets.widget.WidgetType.STAKE;
-import static com.jamieholdstock.dcrwidgets.widget.WidgetType.WORK;
+import static com.jamieholdstock.dcrwidgets.widget.WidgetType.*;
 
 public class WidgetSettings extends AppCompatActivity {
 
@@ -55,10 +53,14 @@ public class WidgetSettings extends AppCompatActivity {
         public void onClick(View v) {
             final Context context = WidgetSettings.this;
 
+            RadioButton allRadio = (RadioButton)findViewById(R.id.allRadioBtn);
             RadioButton priceRadio = (RadioButton)findViewById(R.id.salePriceBtn);
             RadioButton stakeRadio = (RadioButton)findViewById(R.id.stakeInfoBtn);
             WidgetType widgetType;
-            if (priceRadio.isChecked()) {
+            if (allRadio.isChecked()) {
+                widgetType = ALL;
+            }
+            else if (priceRadio.isChecked()) {
                 widgetType = PRICE;
             }
             else if (stakeRadio.isChecked()) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     android:weightSum="1"
     android:background="@drawable/widget_backgroud">
@@ -22,13 +22,13 @@
             android:layout_marginLeft="4dp" />
 
         <TextView
-            style="@style/ShadowText"
+            style="@style/GreyShadowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/update_status"
             android:gravity="bottom|right"
-            android:textSize="9dp"
+            android:textSize="10dp"
             android:layout_gravity="bottom|right"
             android:singleLine="true"
             android:layout_marginRight="4dp"
@@ -37,7 +37,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|top">
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,15 +53,16 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        style="@style/ShadowText"
+                        style="@style/GreyShadowText"
                         android:id="@+id/textView9"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:text="@string/price_heading"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
                         android:textStyle="bold"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -69,27 +72,30 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="2dp"
+                            android:padding="6dp"
                             android:background="@drawable/border"
                             android:orientation="vertical"
                             android:layout_gravity="center"
                             android:layout_marginLeft="6dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginRight="6dp"
-                            android:layout_marginBottom="2dp">
+                            android:layout_marginBottom="2dp"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView6"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:text="@string/dcr_btc_label"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:singleLine="true" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_btc_price"
                                 android:textSize="12dp"
                                 android:text="@string/dots"
@@ -97,33 +103,37 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="2dp"
+                            android:padding="6dp"
                             android:background="@drawable/border"
                             android:orientation="vertical"
                             android:layout_gravity="center"
                             android:layout_marginLeft="6dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginRight="6dp"
-                            android:layout_marginBottom="2dp">
+                            android:layout_marginBottom="2dp"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:text="@string/dcr_usd_label"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:singleLine="true" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_usd_price"
                                 android:textSize="12dp"
                                 android:text="@string/dots"
@@ -131,7 +141,8 @@
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -152,15 +163,16 @@
                     android:layout_gravity="center_horizontal">
 
                     <TextView
-                        style="@style/ShadowText"
+                        style="@style/GreyShadowText"
                         android:id="@+id/textView8"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:text="@string/pos_tickets_heading"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
                         android:textStyle="bold"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -171,16 +183,17 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="2dp"
+                            android:padding="6dp"
                             android:background="@drawable/border"
-                            android:layout_margin="2dp"
                             android:orientation="vertical"
-                            android:layout_gravity="center">
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView3"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:text="@string/ticket_price"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
@@ -189,30 +202,32 @@
                                 android:layout_gravity="center" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_ticket_price"
-                                android:textSize="13dp"
+                                android:textSize="12dp"
                                 android:text="@string/dots"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:padding="2dp"
+                            android:padding="6dp"
                             android:background="@drawable/border"
-                            android:layout_margin="2dp"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView4"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
@@ -221,30 +236,32 @@
                                 android:layout_gravity="center" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_price_change"
-                                android:textSize="13dp"
+                                android:textSize="12dp"
                                 android:text="@string/dots"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:padding="2dp"
+                            android:padding="6dp"
                             android:background="@drawable/border"
-                            android:layout_margin="2dp"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView2"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
@@ -253,15 +270,16 @@
                                 android:layout_gravity="center" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_est_new_price"
-                                android:textSize="13dp"
+                                android:textSize="12dp"
                                 android:text="@string/dots"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -283,15 +301,16 @@
                     android:layout_gravity="center_horizontal" >
 
                     <TextView
-                        style="@style/ShadowText"
+                        style="@style/GreyShadowText"
                         android:id="@+id/textView10"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:text="@string/pow_network_heading"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textIsSelectable="false"
                         android:textStyle="bold"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -304,14 +323,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/border"
-                            android:padding="2dp"
-                            android:layout_margin="2dp"
-                            android:layout_gravity="center">
+                            android:padding="6dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView7"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
@@ -320,15 +340,16 @@
                                 android:layout_gravity="center" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_difficulty"
-                                android:textSize="13dp"
+                                android:textSize="12dp"
                                 android:text="@string/dots"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -336,14 +357,15 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:background="@drawable/border"
-                            android:padding="2dp"
-                            android:layout_margin="2dp"
-                            android:layout_gravity="center">
+                            android:padding="6dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:minWidth="75dp">
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/GreyShadowText"
                                 android:id="@+id/textView5"
-                                android:textSize="11dp"
+                                android:textSize="9dp"
                                 android:text="@string/network_th_s"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
@@ -352,15 +374,16 @@
                                 android:layout_gravity="center" />
 
                             <TextView
-                                style="@style/ShadowText"
+                                style="@style/WhiteShadowText"
                                 android:id="@+id/text_network_hash"
-                                android:textSize="13dp"
+                                android:textSize="12dp"
                                 android:text="@string/dots"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textIsSelectable="false"
                                 android:singleLine="true"
-                                android:layout_gravity="center" />
+                                android:layout_gravity="center"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -368,9 +391,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
     </FrameLayout>
 
 </LinearLayout>

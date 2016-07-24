@@ -1,9 +1,20 @@
 <resources>
 
-    <style name="ShadowText">
+    <style name="GreyShadowText">
         <item name="android:paddingLeft">4px</item>
         <item name="android:paddingBottom">4px</item>
         <item name="android:shadowColor">#000000</item>
+        <item name="android:textColor">#AABBBB</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="WhiteShadowText">
+        <item name="android:paddingLeft">4px</item>
+        <item name="android:paddingBottom">4px</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:shadowDx">3</item>
         <item name="android:shadowDy">3</item>
         <item name="android:shadowRadius">1</item>

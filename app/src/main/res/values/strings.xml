@@ -6,7 +6,8 @@
 
     <!--Settings-->
     <string name="choose_a_widget">Choose a widget:</string>
-    <string name="price_radio_button">DCR Last sale price</string>
+    <string name="all_radio_button">All info</string>
+    <string name="price_radio_button">Last sale price</string>
     <string name="stake_radio_button">PoS info</string>
     <string name="work_radio_button">PoW info</string>
     <string name="save_button">Choose</string>

@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_radio_button"
+            android:id="@+id/allRadioBtn"
+            android:checked="true"
+            android:layout_margin="6dp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price_radio_button"
             android:id="@+id/salePriceBtn"
-            android:checked="true"
+            android:checked="false"
+            android:layout_margin="6dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work_radio_button"
+            android:id="@+id/radioButton"
             android:layout_margin="6dp" />
 
         <RadioButton
@@ -23,12 +40,6 @@
             android:id="@+id/stakeInfoBtn"
             android:layout_margin="6dp" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/work_radio_button"
-            android:id="@+id/radioButton"
-            android:layout_margin="6dp" />
     </RadioGroup>
 
     <Button
